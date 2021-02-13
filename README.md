@@ -16,9 +16,14 @@ cd e-vent
 ```
 docker run --rm -v $(pwd):/opt -w /opt laravelsail/php80-composer:latest composer install
 ```
-#### 4 - Copiar arquivo de variáveis de ambiente
+#### 4 - Copiar arquivo de variáveis de ambiente, alterar configurações
 ```
 cp .env.example .env
+```
+Abrir arquivo .env e editar configuração 'DB_HOST' e 'DB_DATABASE'
+```
+DB_HOST=mysql
+DB_DATABASE=e_vent
 ```
 #### 5 - Criar atalho para não digitar './vendor/bin/sail' toda vez
 ```
