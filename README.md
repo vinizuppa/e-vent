@@ -29,22 +29,26 @@ DB_DATABASE=e_vent
 ```
 alias sail='bash vendor/bin/sail'
 ```
-#### 6 - Executar comando para gerar key
+#### 6 - Executar o comando do Laravel Sail (pode demorar na primeira execução) 
+Primeiro comando sobe as máquinas no Docker.
+Segundo comando cancela a execução do projeto.
 ```
-sail artisan key:generate
-```
-#### 7 - Executar o comando do Laravel Sail (pode demorar na primeira execução)
-Com o primeiro comando o terminal fica ocupado, até cancelar a execução com 'Ctrl+C'. 
-Na segunda opção o terminal fica liberado.
-Para cancelar a execução do projeto use o terceiro comando 'down'
-```
-sail up
-
 sail up -d
-
 sail down
 ```
-#### 8 - Após executar o comando o site pode ser acessado em <http://localhost:8080>
+#### 7 - Executar comandos para inicializar projeto (gerar key, migrations banco e instalar Breeze)
+```
+sail artisan key:generate
+sail artisan migrate
+sail artisan breeze:install
+sail npm install
+sail npm run dev
+```
+#### 8 - Comando para atualizar dependências (sempre que atualizar alguma depedência do projeto)
+```
+docker run --rm -v $(pwd):/opt -w /opt laravelsail/php80-composer:latest composer update
+```
+#### 9 - Após executar o comando o site pode ser acessado em <http://localhost:8080>
 
 ### Projeto desenvolvido com Laravel
 <a href="https://laravel.com" target="_blank">
