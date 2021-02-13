@@ -2,25 +2,45 @@
 
 Sistema para gerenciamento de eventos da Fatec Ourinhos.
 
-### Como executar (necessário Docker instalado)
-#### Acessar pasta do projeto
+### Como executar projeto? 
+*Necessário Docker
+#### 1 - Clonar repositório
+```
+git clone https://github.com/renandmc/e-vent.git
+```
+#### 2 - Acessar pasta do projeto
 ```
 cd e-vent
 ```
-#### Executar o comando do Laravel Sail (pode demorar na primeira execução)
-Com esse comando o terminal fica ocupado, até cancelar a execução com 'Ctrl+C'
+#### 3 - Instalar dependências com composer (via Docker)
 ```
-./vendor/bin/sail up
+docker run --rm -v $(pwd):/opt -w /opt laravelsail/php80-composer:latest composer install
 ```
-Já com esse parâmetro '-d' o comando é executado e o terminal liberado
+#### 4 - Copiar arquivo de variáveis de ambiente
 ```
-./vendor/bin/sail up -d
+cp .env.example .env
 ```
-#### Após executar o comando o site pode ser acessado em <http://localhost:8080>
-#### Para cancelar a execução do projeto
+#### 5 - Criar atalho para não digitar './vendor/bin/sail' toda vez
 ```
-./vendor/bin/sail down
+alias sail='bash vendor/bin/sail'
 ```
+#### 6 - Executar comando para gerar key
+```
+sail artisan key:generate
+```
+#### 7 - Executar o comando do Laravel Sail (pode demorar na primeira execução)
+Com o primeiro comando o terminal fica ocupado, até cancelar a execução com 'Ctrl+C'. 
+Na segunda opção o terminal fica liberado.
+Para cancelar a execução do projeto use o terceiro comando 'down'
+```
+sail up
+
+sail up -d
+
+sail down
+```
+#### 8 - Após executar o comando o site pode ser acessado em <http://localhost:8080>
+
 ### Projeto desenvolvido com Laravel
 <a href="https://laravel.com" target="_blank">
   <img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="150">
