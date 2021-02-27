@@ -20,11 +20,6 @@ docker run --rm -v $(pwd):/opt -w /opt laravelsail/php80-composer:latest compose
 ```
 cp .env.example .env
 ```
-Abrir arquivo .env e editar configuração 'DB_HOST' e 'DB_DATABASE'
-```
-DB_HOST=mysql
-DB_DATABASE=e_vent
-```
 #### 5 - Criar atalho para não digitar './vendor/bin/sail' toda vez
 ```
 alias sail='bash vendor/bin/sail'
@@ -40,7 +35,6 @@ sail down
 ```
 sail artisan key:generate
 sail artisan migrate
-sail artisan breeze:install
 sail npm install
 sail npm run dev
 ```
