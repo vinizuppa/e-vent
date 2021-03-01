@@ -7,11 +7,17 @@ use Illuminate\Http\Request;
 
 class UsersController extends Controller
 {
-    public function show($id) 
+    public function list()
     {
-        return view('user.profile', [
-            'user' => User::findOrFail($id),
+        return view('user.list', [
             'users' => User::all()
+        ]);
+    }
+
+    public function show($id)
+    {
+        return view('user.show', [
+            'user' => User::findOrFail($id)
         ]);
     }
 }

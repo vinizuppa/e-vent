@@ -16,12 +16,20 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-})->name('home');
+})
+    ->name('home');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+})
+    ->middleware(['auth'])
+    ->name('dashboard');
 
-Route::get('/user/{id}', [UsersController::class, 'show'])->name('users/show');
+Route::get('/users', [UsersController::class, 'list'])
+    ->middleware(['auth'])
+    ->name('users/list');
+Route::get('/users/{id}', [UsersController::class, 'show'])
+    ->middleware(['auth'])
+    ->name('users/show');
 
 require __DIR__.'/auth.php';
