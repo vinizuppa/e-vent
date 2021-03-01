@@ -38,9 +38,11 @@ sail artisan migrate
 sail npm install
 sail npm run dev
 ```
-#### 8 - Comando para atualizar dependências (sempre que atualizar alguma depedência do projeto)
+#### 8 - Comandos para atualizar dependências (sempre que houver alguma atualização de depedências ou banco de dados do projeto)
 ```
 docker run --rm -v $(pwd):/opt -w /opt laravelsail/php80-composer:latest composer update
+sail up -d
+sail artisan migrate
 ```
 #### 9 - Após executar o comando o site pode ser acessado em <http://localhost:8080>
 
