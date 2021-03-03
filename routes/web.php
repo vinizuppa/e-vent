@@ -1,7 +1,10 @@
 <?php
 
-use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\UsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,26 +17,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})
+Route::get('/', [HomeController::class, 'index'])
     ->name('home');
+
+Route::get('/admin', [AdminController::class, 'index'])
+    ->middleware('auth')
+    ->name('admin.home');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })
-    ->middleware(['auth'])
+    ->middleware('auth')
     ->name('dashboard');
 
-Route::get('/users', [UsersController::class, 'list'])
+
+Route::get('/admin/users', [UsersController::class, 'list'])
     ->middleware(['auth'])
-    ->name('users/list');
-Route::get('/users/{id}', [UsersController::class, 'show'])
+    ->name('users.list');
+Route::get('/admin/users/{id}', [UsersController::class, 'show'])
     ->middleware(['auth'])
-    ->name('users/show');
+    ->name('users.show');
 
 require __DIR__.'/auth.php';
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
