@@ -1,4 +1,4 @@
-<nav class="navbar navbar-fixed-top navbar-expand-md navbar-light bg-white shadow-sm">
+<nav class="navbar sticky-top navbar-expand-md navbar-light bg-white shadow-sm">
     <div class="container-fluid">
         <a class="navbar-brand" href="{{ url('/') }}">
             <x-application-logo width="150" />
