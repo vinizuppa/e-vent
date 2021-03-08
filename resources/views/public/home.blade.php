@@ -8,7 +8,7 @@
             @endif
             <div class="card">
                 <div class="card-body">
-                    <img src="https://lh3.googleusercontent.com/proxy/1E57FpHBA-km_bo3pQ-H4MYliaGJizAQ4EZY7cc4VQ9bkF5AyDlmgxjLaz7BqZCrE3fauuPSFMOkBRyRPGO4mPspKymy8lVKFlDy3QMysMH-6Y6jCaYWPbCJwlyw" alt="" width="100%">
+                    <img src="https://passevip.com.br/wp-content/uploads/2018/04/2018-04-23-como-aumentar-o-alcance-e-atrair-publico-para-seu-evento.jpg" alt="" width="100%">
                     Evento em destaque
                 </div>
             </div>
