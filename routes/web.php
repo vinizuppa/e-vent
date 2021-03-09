@@ -17,18 +17,17 @@ use App\Http\Controllers\Admin\UsersController;
 |
 */
 
-Route::get('/', [HomeController::class, 'index'])
-    ->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('/admin', [AdminController::class, 'index'])
-    ->middleware('auth')
-    ->name('admin.home');
+Route::middleware(['auth'])->group(function () {
+    Route::prefix('admin')->group(function () {
+        Route::get('/', [AdminController::class, 'index'])->name('admin.home');
+        Route::prefix('/users')->group(function () {
+            Route::get('/', [UsersController::class, 'list'])->name('users.list');
+            Route::get('/{id}', [UsersController::class, 'show'])->whereNumber('id')->name('users.show');
+        });
+    });
+});
 
-Route::get('/admin/users', [UsersController::class, 'list'])
-    ->middleware('auth')
-    ->name('users.list');
-Route::get('/admin/users/{id}', [UsersController::class, 'show'])
-    ->middleware('auth')
-    ->name('users.show');
 
 require __DIR__.'/auth.php';
