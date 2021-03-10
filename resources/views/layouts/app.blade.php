@@ -8,18 +8,25 @@
         <link rel="shortcut icon" href="{{ asset('img/favicon.png') }}" />
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"> 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
         <link href="{{ asset('css/app.css') }}" type="stylesheet" />
     </head>
     <body>
         <x-navbar /><!-- Chamando arquivo navbar.blade.php -->
         <div class="container-fluid mt-3">
             <div class="row">
-                <nav class="col-md-2">
+                <nav class="col-md-3 col-xl-2 mb-3">
                     <x-sidebar /><!-- Chamando arquivo sidebar.blade.php -->
                 </nav>
-                <main class="col-md-10">
-                    {{ $slot }}
+                <main class="col-md-9 col-xl-10">
+                    <div class="card shadow">
+                        <div class="card-header">
+                            <h1>{{ $title }}</h1>
+                        </div>
+                        <div class="card-body">
+                            {{ $slot }}
+                        </div>
+                    </div>
                 </main>
             </div>
         </div>
