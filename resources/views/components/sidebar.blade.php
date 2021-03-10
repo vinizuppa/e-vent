@@ -8,18 +8,18 @@
                 </a>
             </li>
             <li class="nav-item bg-danger mb-2 rounded">
-                <a class="nav-link text-light fs-6 fw-bold" href="{{ route('users.list') }}">
+                <a class="nav-link text-light fs-6 fw-bold" href="#">
                 <i class="fas fa-calendar-alt"></i>
                     Eventos
                 </a>
             </li>
             <li class="nav-item bg-danger mb-2 rounded">
-                <a class="nav-link text-light fs-6 fw-bold" href="{{ route('teste') }}">
+                <a class="nav-link text-light fs-6 fw-bold" href="#">
                     Teste
                 </a>
             </li>
             <li class="nav-item bg-danger mb-2 rounded">
-                <a class="nav-link text-light fs-6 fw-bold" href="{{ route('users.list') }}">
+                <a class="nav-link text-light fs-6 fw-bold" href="#">
                     Usuários
                 </a>
             </li>
