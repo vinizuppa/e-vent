@@ -22,10 +22,19 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::middleware(['auth'])->group(function () {
     Route::prefix('admin')->group(function () {
         Route::get('/', [AdminController::class, 'index'])->name('admin.home');
+        Route::resources([
+            'users' => UsersController::class
+        ]);
+        /*
         Route::prefix('/users')->group(function () {
-            Route::get('/', [UsersController::class, 'list'])->name('users.list');
+            Route::get('/', [UsersController::class, 'index'])->name('users.index');
             Route::get('/{id}', [UsersController::class, 'show'])->whereNumber('id')->name('users.show');
+            Route::get('/new', [UsersController::class, 'create'])->name('users.create');
+            Route::post('/', [UsersController::class, 'store'])->name('users.store');
+            Route::get('/edit/{id}', [UsersController::class, 'edit'])->name('users.edit');
+            Route::put('/edit/{id}', )
         });
+        */
     });
 });
 
