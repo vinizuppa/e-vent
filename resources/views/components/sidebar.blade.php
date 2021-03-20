@@ -8,7 +8,7 @@
                 </a>
             </li>
             <li class="nav-item bg-danger mb-2 rounded">
-                <a class="nav-link text-light fs-6 fw-bold" href="#">
+                <a class="nav-link text-light fs-6 fw-bold" href="{{ route('events.index') }}">
                 <i class="fas fa-calendar-alt"></i>
                     Eventos
                 </a>
