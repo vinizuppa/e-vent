@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Models\Event;
 
 class EventController extends Controller
@@ -39,7 +41,29 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'required|string',
+            'address' => 'required|string',
+            'phone' => 'required|string',
+            'registration_fee' => 'required|numeric',
+            'start_date' => 'required|date|after_or_equal:now',
+            'end_date' => 'required|date|after:start_date'
+        ]);
+
+        $user = User::find(Auth::user()->id);
+
+        $user->events()->create([
+            'name' => $request->name,
+            'description' => $request->description,
+            'address' => $request->address,
+            'phone' => $request->phone,
+            'registration_fee' => $request->registration_fee,
+            'start_date' => $request->start_date,
+            'end_date' => $request->end_date
+        ]);
+
+        return redirect()->route('events.index');
     }
 
     /**

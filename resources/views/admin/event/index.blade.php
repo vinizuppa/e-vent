@@ -12,6 +12,7 @@
                 <th scope="col">Valor</th>
                 <th scope="col">Início</th>
                 <th scope="col">Fim</th>
+                <th scope="col">Opções</th>
             </thead>
             <tbody>
                 @forelse ($events as $event)
