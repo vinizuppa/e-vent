@@ -19,14 +19,37 @@
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->group }}</td>
-                        <td class="gt-1">
-                            <a href="{{ route('users.show', $user->id) }}" class="btn btn-primary">Info</a>
-                            <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning">Editar</a>
-                            <form action="{{ route('users.destroy', $user->id) }}" method="post">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Excluir</button>
-                            </form>
+                        <td>
+                            <a href="{{ route('users.show', $user->id) }}" class="btn btn-primary">
+                                Info
+                            </a>
+                            <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning">
+                                Editar
+                            </a>
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalExcluir">
+                                Excluir
+                            </button>
+                            <div class="modal fade" id="modalExcluir" tabindex="-1" aria-labelledby="modalExcluir" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Excluir usuário</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Deseja excluir o usuário {{ $user->name}}?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <form action="{{ route('users.destroy', $user->id) }}" method="post">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger">Excluir</button>
+                                            </form>
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </td>
                     </tr>
                 @empty
