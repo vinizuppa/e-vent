@@ -26,9 +26,9 @@
                             <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning">
                                 Editar
                             </a>
-                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalExcluir">
+                            <a href="#" id="btnExcluir" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalExcluir" data-bs-user="{{ $user }}" data-bs-route="{{ route('users.destroy', $user->id) }}">
                                 Excluir
-                            </button>
+                            </a>
                             <div class="modal fade" id="modalExcluir" tabindex="-1" aria-labelledby="modalExcluir" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
@@ -37,10 +37,10 @@
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            Deseja excluir o usuário {{ $user->name}}?
+                                            Deseja excluir o usuário?
                                         </div>
                                         <div class="modal-footer">
-                                            <form action="{{ route('users.destroy', $user->id) }}" method="post">
+                                            <form id="deleteForm" method="post">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger">Excluir</button>
@@ -60,4 +60,16 @@
             </tbody>
         </table>
     </div>
+    <script>
+        var modalExcluir = document.getElementById('modalExcluir');
+        modalExcluir.addEventListener('show.bs.modal', function (event) {
+            var button = event.relatedTarget;
+            var user = JSON.parse(button.getAttribute('data-bs-user'));
+            var route = button.getAttribute('data-bs-route');
+            var textoModal = document.getElementsByClassName('modal-body')[0];
+            textoModal.textContent = "Deseja excluir o usuário " + user.name + "?";
+            var form = document.getElementById('deleteForm');
+            form.setAttribute('action', route);
+        });
+    </script>
 </x-app-layout>
