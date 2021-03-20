@@ -2,7 +2,7 @@
     <div class="card-body">
         <ul class="nav flex-column">
             <li class="nav-item bg-danger mb-2 rounded">
-                <a class="nav-link text-light fs-6 fw-bold" href="{{ route('users.list') }}">
+                <a class="nav-link text-light fs-6 fw-bold" href="{{ route('users.index') }}">
                     <i class="bi bi-person-fill"></i>
                     Usuários
                 </a>
