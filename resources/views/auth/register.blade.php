@@ -3,7 +3,7 @@
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card">
-                    <div class="card-header">
+                    <div class="card-header bg-danger fs-5 text-light">
                         {{ __('Register') }}
                     </div>
                     <div class="card-body">
@@ -96,7 +96,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
+                                    <button type="submit" class="btn btn-danger text-light">
                                         {{ __('Register') }}
                                     </button>
                                 </div>
