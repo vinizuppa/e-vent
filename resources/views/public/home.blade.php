@@ -50,7 +50,7 @@
         </div>
     </div>
     <div class="row justify-content-center">
-        <form class="row g-3 align-items-center mt-5 d-flex justify-content-center w-50">
+        <form class="row g-3 align-items-center mt-5 d-flex justify-content-center w-50" action="#" method="post">
             <div class="input-group mb-3">
                 <input type="text" class="form-control form-control-lg" placeholder="Encontre um evento" aria-label="Encontre um evento" aria-describedby="button-addon2">
                 <button class="btn btn-danger" type="button" id="button-addon2">
@@ -112,6 +112,6 @@
                 </div>
             </div>
         </div>
-        
+
     </div>
 </x-guest-layout>

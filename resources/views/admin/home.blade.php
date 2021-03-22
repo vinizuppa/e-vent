@@ -1,4 +1,4 @@
 <x-app-layout>
-    <x-slot name="title">Home organizador</x-slot>
-    <h2>Teste</h2>
+    <x-slot name="title">Bem-vindo, {{ Auth::user()->name }}!</x-slot>
+    <p>Adicionar gráficos e informações aqui</p>
 </x-app-layout>

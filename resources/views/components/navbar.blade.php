@@ -14,7 +14,8 @@
                 @else
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('admin.home') }}">
-                            Admin
+                            <i class="bi bi-house-fill"></i>
+                            {{ Auth::user()->group }}
                         </a>
                     </li>
                 @endguest
@@ -23,28 +24,32 @@
             <ul class="navbar-nav ml-auto">
                 <!-- Authentication Links -->
                 @guest
-                    @if (Route::has('login'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">
-                                {{ __('Login') }}
-                            </a>
-                        </li>
-                    @endif
                     @if (Route::has('register'))
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('register') }}">
+                                <i class="bi bi-person-plus-fill"></i>
                                 {{ __('Register') }}
+                            </a>
+                        </li>
+                    @endif
+                    @if (Route::has('login'))
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}">
+                                <i class="bi bi-box-arrow-in-right"></i>
+                                {{ __('Login') }}
                             </a>
                         </li>
                     @endif
                 @else
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('users.show', [Auth::user()->id]) }}">
+                            <i class="bi bi-person-fill"></i>
                             {{ Auth::user()->name }}
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                            <i class="bi bi-box-arrow-right"></i>
                             {{ __('Logout') }}
                         </a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

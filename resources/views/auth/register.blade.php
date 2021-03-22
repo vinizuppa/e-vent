@@ -4,6 +4,7 @@
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-header bg-danger fs-5 text-light">
+                        <i class="bi bi-person-plus-fill"></i>
                         {{ __('Register') }}
                     </div>
                     <div class="card-body">

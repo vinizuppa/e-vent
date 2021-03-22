@@ -1,13 +1,13 @@
 <x-app-layout>
-    <x-slot name="title">Lista de Usuários</x-slot>
+    <x-slot name="title">Usuários</x-slot>
     <a href="{{ route('users.create') }}" class="btn btn-primary mb-2">Novo</a>
     <div class="table-responsive">
-        <table class="table table-striped">
-            <thead class="table-dark">
+        <table class="table table-striped table-bordered">
+            <thead class="table-light">
                 <th scope="col">ID</th>
-                <th scope="col">Usuário</th>
                 <th scope="col">Nome</th>
                 <th scope="col">E-mail</th>
+                <th scope="col">Usuário</th>
                 <th scope="col">Grupo</th>
                 <th scope="col">Ações</th>
             </thead>
@@ -15,9 +15,9 @@
                 @forelse ($users as $user)
                     <tr>
                         <td>{{ $user->id }}</td>
-                        <td>{{ $user->username }}</td>
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
+                        <td>{{ $user->username }}</td>
                         <td>{{ $user->group }}</td>
                         <td>
                             <a href="{{ route('users.show', $user->id) }}" class="btn btn-primary">

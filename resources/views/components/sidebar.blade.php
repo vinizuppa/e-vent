@@ -13,16 +13,6 @@
                     Eventos
                 </a>
             </li>
-            <li class="nav-item bg-danger mb-2 rounded">
-                <a class="nav-link text-light fs-6 fw-bold" href="#">
-                    Teste
-                </a>
-            </li>
-            <li class="nav-item bg-danger mb-2 rounded">
-                <a class="nav-link text-light fs-6 fw-bold" href="#">
-                    Usuários
-                </a>
-            </li>
         </ul>
     </div>
 </div>
