@@ -10,6 +10,33 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
         <link href="{{ asset('css/app.css') }}" type="stylesheet" />
+            
+        <script type="text/javascript">
+            /* Máscaras ER */
+            function mascara(o,f){
+                v_obj=o
+                v_fun=f
+                setTimeout("execmascara()",1)
+            }
+            function execmascara(){
+                v_obj.value=v_fun(v_obj.value)
+            }
+            function mtel(v){
+                v=v.replace(/\D/g,"");             //Remove tudo o que não é dígito
+                v=v.replace(/^(\d{2})(\d)/g,"($1) $2"); //Coloca parênteses em volta dos dois primeiros dígitos
+                v=v.replace(/(\d)(\d{4})$/,"$1-$2");    //Coloca hífen entre o quarto e o quinto dígitos
+                return v;
+            }
+            function id( el ){
+                return document.getElementById( el );
+            }
+            window.onload = function(){
+                id('telefone').onkeypress = function(){
+                    mascara( this, mtel );
+                }
+            }
+        </script>
+
     </head>
     <body>
         <x-navbar /><!-- Chamando arquivo navbar.blade.php -->
