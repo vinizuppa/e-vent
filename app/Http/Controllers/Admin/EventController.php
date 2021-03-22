@@ -51,7 +51,7 @@ class EventController extends Controller
             'end_date' => 'required|date|after:start_date'
         ]);
 
-        $user = User::find(Auth::user()->id);
+        $user = User::findOrFail(Auth::user()->id);
 
         $user->events()->create([
             'name' => $request->name,
@@ -74,7 +74,9 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
-        //
+        return view('admin.event.show', [
+            'event' => $event
+        ]);
     }
 
     /**
@@ -85,7 +87,9 @@ class EventController extends Controller
      */
     public function edit(Event $event)
     {
-        //
+        return view('admin.event.edit', [
+            'event' => $event
+        ]);
     }
 
     /**
@@ -97,7 +101,27 @@ class EventController extends Controller
      */
     public function update(Request $request, Event $event)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'required|string',
+            'address' => 'required|string',
+            'phone' => 'required|string',
+            'registration_fee' => 'required|numeric',
+            'start_date' => 'required|date|after_or_equal:now',
+            'end_date' => 'required|date|after:start_date'
+        ]);
+
+        $event->update([
+            'name' => $request->name,
+            'description' => $request->description,
+            'address' => $request->address,
+            'phone' => $request->phone,
+            'registration_fee' => $request->registration_fee,
+            'start_date' => $request->start_date,
+            'end_date' => $request->end_date
+        ]);
+
+        return redirect()->route('events.index');
     }
 
     /**
@@ -108,6 +132,8 @@ class EventController extends Controller
      */
     public function destroy(Event $event)
     {
-        //
+        $event->destroy();
+
+        return redirect()->route('events.index');
     }
 }
