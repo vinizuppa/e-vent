@@ -37,7 +37,7 @@
 
         <div class="col-md-6">
             <label for="registration_fee" class="form-label">Valor Inscrição R$</label>
-            <input id="registration_fee" type="text" class="form-control @error('registration_fee') is-invalid @enderror" name="registration_fee" value="{{ old('registration_fee') ?? $event->registration_fee }}" autocomplete="registration_fee">
+            <input id="registration_fee" type="text" class="form-control @error('registration_fee') is-invalid @enderror" name="registration_fee" value="{{ old('registration_fee') ?? $event->registration_fee }}" autocomplete="registration_fee" onkeyup="formatarMoeda(this)";>
             @error('registration_fee')
                 <div class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
