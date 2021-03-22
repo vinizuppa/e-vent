@@ -179,5 +179,8 @@ return [
         'year'                  => 'ano',
         'email'                 => 'e-mail',
         'remember'              => 'lembrar-me',
+        'registration_fee'      => 'valor inscrição',
+        'start_date'            => 'data hora inicial',
+        'end_date'              => 'data hora final'
     ],
 ];
