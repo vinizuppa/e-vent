@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
         <link href="{{ asset('css/app.css') }}" type="stylesheet" />
-            
+
         <script type="text/javascript">
             /* Máscaras ER */
             function mascara(o,f){

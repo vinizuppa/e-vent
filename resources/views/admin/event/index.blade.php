@@ -7,6 +7,7 @@
                 <th scope="col">ID</th>
                 <th scope="col">Nome</th>
                 <th scope="col">Período</th>
+                <th scope="col">Valor inscrição</th>
                 <th scope="col">Opções</th>
             </thead>
             <tbody>
@@ -14,7 +15,8 @@
                     <tr>
                         <td>{{ $event->id }}</td>
                         <td>{{ $event->name }}</td>
-                        <td>{{ $event->startDate() }} - {{ $event->endDate() }}</td>
+                        <td>{{ $event->startDate() }} - {{ $event->endDate() }} ({{ $event->eventDuration() }})</td>
+                        <td>{{ ($event->registration_fee == 0) ? 'Sem taxa' : 'R$ ' . $event->registration_fee }}</td>
                         <td>
                             <a href="{{ route('events.show', $event->id) }}" class="btn btn-primary">
                                 Info

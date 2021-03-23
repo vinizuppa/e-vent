@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
+use \DateTime;
 
 class Event extends Model
 {
@@ -38,5 +39,10 @@ class Event extends Model
     public function endDate()
     {
         return date('d/m/Y H:i', strtotime($this->end_date));
+    }
+
+    public function eventDuration()
+    {
+        return date_diff(date_create($this->start_date), date_create($this->end_date))->format('%d dias');
     }
 }
