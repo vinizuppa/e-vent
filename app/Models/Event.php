@@ -29,4 +29,14 @@ class Event extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function startDate()
+    {
+        return date('d/m/Y H:i', strtotime($this->start_date));
+    }
+
+    public function endDate()
+    {
+        return date('d/m/Y H:i', strtotime($this->end_date));
+    }
 }

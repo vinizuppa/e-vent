@@ -47,7 +47,7 @@
 
         <div class="col-md-6">
             <label for="start_date" class="form-label">Data Hora Inicial</label>
-            <input id="start_date" type="datetime-local" class="form-control @error('start_date') is-invalid @enderror" name="start_date" value="{{ old('start_date') ?? $event->start_date }}" autocomplete="start_date">
+            <input id="start_date" type="datetime-local" class="form-control @error('start_date') is-invalid @enderror" name="start_date" value="{{ old('start_date') ?? date('Y-m-d\TH:i', strtotime($event->start_date)) }}" autocomplete="start_date">
             @error('start_date')
                 <div class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -57,7 +57,7 @@
 
         <div class="col-md-6">
             <label for="end_date" class="form-label">Data Hora Final</label>
-            <input id="end_date" type="datetime-local" class="form-control @error('end_date') is-invalid @enderror" name="end_date" value="{{ old('end_date') ?? $event->end_date }}" autocomplete="end_date">
+            <input id="end_date" type="datetime-local" class="form-control @error('end_date') is-invalid @enderror" name="end_date" value="{{ old('end_date') ?? date('Y-m-d\TH:i', strtotime($event->end_date)) }}" autocomplete="end_date">
             @error('end_date')
                 <div class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>

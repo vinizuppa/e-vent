@@ -14,7 +14,7 @@
                     <tr>
                         <td>{{ $event->id }}</td>
                         <td>{{ $event->name }}</td>
-                        <td>{{ $event->start_date }} - {{ $event->end_date }}</td>
+                        <td>{{ $event->startDate() }} - {{ $event->endDate() }}</td>
                         <td>
                             <a href="{{ route('events.show', $event->id) }}" class="btn btn-primary">
                                 Info
