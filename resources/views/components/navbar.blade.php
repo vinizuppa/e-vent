@@ -15,7 +15,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('admin.home') }}">
                             <i class="bi bi-house-fill"></i>
-                            {{ Auth::user()->group }}
+                            Painel - {{ Auth::user()->group }}
                         </a>
                     </li>
                 @endguest
