@@ -46,7 +46,7 @@ class EventController extends Controller
             'description' => 'required|string',
             'address' => 'required|string',
             'phone' => 'required|string',
-            'registration_fee' => 'required|numeric',
+            'registration_fee' => 'required|numeric|max:999.99',
             'start_date' => 'required|date|after_or_equal:now',
             'end_date' => 'required|date|after:start_date'
         ]);
