@@ -59,59 +59,26 @@
             </div>
         </form>
     </div>
-    <div class="row my-5">
-        <div class="col-md-3">
-            <div class="card shadow">
-                <div class="card-body" heigth="50%">
-                    <img src="https://agenciabrasilia.df.gov.br/wp-conteudo/uploads/2019/05/31.05.2019-Festas-juninas-animam-os-brasilienses-nos-meses-de-junho-e-julho-mas-%C3%A9-preciso-ter-cuidado-com-os-fogos-de-artif%C3%ADcio.-Foto-Pedro-Ventura-Ag%C3%AAncia-Bras%C3%ADlia.jpeg" alt="" width="100%">
-                    <h6 class="fst-italic">Local: Chácara do Pé de Pano</h6>
-                    <h6 class="fst-italic">Data: 23/03/2021</h6>
-                    <h6 class="fst-italic">Hora: 16:00 ás 20:00</h6>
-                    <div>
-                    <a href="#" class="btn btn-danger fst-italic">Ver mais</a>
+    <div class="container my-3">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            @forelse ($events as $event) 
+                <div class="col">
+                    <div class="card shadow">
+                    <img src="https://agenciabrasilia.df.gov.br/wp-conteudo/uploads/2019/05/31.05.2019-Festas-juninas-animam-os-brasilienses-nos-meses-de-junho-e-julho-mas-%C3%A9-preciso-ter-cuidado-com-os-fogos-de-artif%C3%ADcio.-Foto-Pedro-Ventura-Ag%C3%AAncia-Bras%C3%ADlia.jpeg" class="card-img-top" alt="">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $event->name }}</h5>
+                            <p class="card-text">Inicio: {{ $event->start_date }}</p>
+                            <p class="card-text">Fim: {{ $event->end_date }}</p>
+                            <p class="card-text">Valor: {{ $event->registration_fee }}</p>
+                            <a href="#" class="btn btn-danger">Ver mais</a>
+                                 
+                          
+                        </div>
                     </div>
                 </div>
-            </div>
+            @empty
+            <p>Nenhum evento</p>
+            @endforelse
         </div>
-        <div class="col-md-3">
-            <div class="card shadow">
-                <div class="card-body" heigth="50%">
-                    <img src="https://agenciabrasilia.df.gov.br/wp-conteudo/uploads/2019/05/31.05.2019-Festas-juninas-animam-os-brasilienses-nos-meses-de-junho-e-julho-mas-%C3%A9-preciso-ter-cuidado-com-os-fogos-de-artif%C3%ADcio.-Foto-Pedro-Ventura-Ag%C3%AAncia-Bras%C3%ADlia.jpeg" alt="" width="100%">
-                    <h6 class="fst-italic">Local: Chácara do Pé de Pano</h6>
-                    <h6 class="fst-italic">Data: 23/03/2021</h6>
-                    <h6 class="fst-italic">Hora: 16:00 ás 20:00</h6>
-                    <div>
-                    <a href="#" class="btn btn-danger fst-italic">Ver mais</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card shadow">
-                <div class="card-body" heigth="50%">
-                    <img src="https://agenciabrasilia.df.gov.br/wp-conteudo/uploads/2019/05/31.05.2019-Festas-juninas-animam-os-brasilienses-nos-meses-de-junho-e-julho-mas-%C3%A9-preciso-ter-cuidado-com-os-fogos-de-artif%C3%ADcio.-Foto-Pedro-Ventura-Ag%C3%AAncia-Bras%C3%ADlia.jpeg" alt="" width="100%">
-                    <h6 class="fst-italic">Local: Chácara do Pé de Pano</h6>
-                    <h6 class="fst-italic">Data: 23/03/2021</h6>
-                    <h6 class="fst-italic">Hora: 16:00 ás 20:00</h6>
-                    <div>
-                    <a href="#" class="btn btn-danger fst-italic">Ver mais</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card shadow">
-                <div class="card-body" heigth="50%">
-                    <img src="https://agenciabrasilia.df.gov.br/wp-conteudo/uploads/2019/05/31.05.2019-Festas-juninas-animam-os-brasilienses-nos-meses-de-junho-e-julho-mas-%C3%A9-preciso-ter-cuidado-com-os-fogos-de-artif%C3%ADcio.-Foto-Pedro-Ventura-Ag%C3%AAncia-Bras%C3%ADlia.jpeg" alt="" width="100%">
-                    <h6 class="fst-italic">Local: Chácara do Pé de Pano</h6>
-                    <h6 class="fst-italic">Data: 23/03/2021</h6>
-                    <h6 class="fst-italic">Hora: 16:00 ás 20:00</h6>
-                    <div>
-                    <a href="#" class="btn btn-danger fst-italic">Ver mais</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
     </div>
 </x-guest-layout>
