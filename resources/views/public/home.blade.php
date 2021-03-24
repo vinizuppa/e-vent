@@ -67,9 +67,9 @@
                     <img src="https://agenciabrasilia.df.gov.br/wp-conteudo/uploads/2019/05/31.05.2019-Festas-juninas-animam-os-brasilienses-nos-meses-de-junho-e-julho-mas-%C3%A9-preciso-ter-cuidado-com-os-fogos-de-artif%C3%ADcio.-Foto-Pedro-Ventura-Ag%C3%AAncia-Bras%C3%ADlia.jpeg" class="card-img-top" alt="">
                         <div class="card-body">
                             <h5 class="card-title">{{ $event->name }}</h5>
-                            <p class="card-text">Inicio: {{ $event->start_date }}</p>
-                            <p class="card-text">Fim: {{ $event->end_date }}</p>
-                            <p class="card-text">Valor: {{ $event->registration_fee }}</p>
+                            <p class="card-text">Inicio: {{ $event->startDate() }}</p>
+                            <p class="card-text">Fim: {{ $event->endDate() }}</p>
+                            <p class="card-text">Valor: R$ {{ $event->registration_fee }}</p>
                             <a href="#" class="btn btn-danger">Ver mais</a>
                                  
                           
