@@ -1,10 +1,8 @@
 <x-app-layout>
     <x-slot name="title">Editar Atividade</x-slot>
-
-    <form action="{{ route('activities.update', [$activity->id]) }}" method="post" class="row g-3">
+    <form action="{{ route('activities.update', $activity) }}" method="post" class="row g-3">
         @csrf
         @method('PUT')
-
         <div class="col-md-6">
             <label for="name" class="form-label">{{ __('Name') }}</label>
             <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') ?? $activity->name }}" required autocomplete="name" autofocus>
@@ -56,9 +54,9 @@
         </div>
 
         <div class="col-md-6">
-            <label for="local" class="form-label">Local</label>
-            <input id="local" type="text" class="form-control @error('local') is-invalid @enderror" name="local" value="{{ old('local') ?? $activity->local}}" autocomplete="local">
-            @error('local')
+            <label for="place" class="form-label">Local</label>
+            <input id="place" type="text" class="form-control @error('place') is-invalid @enderror" name="place" value="{{ old('place') ?? $activity->place}}" autocomplete="place">
+            @error('place')
                 <div class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </div>

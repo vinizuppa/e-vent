@@ -4,10 +4,10 @@
     <p>Nome: {{ $activity->name }}</p>
     <p>Descrição: {{ $activity->description }}</p>
     <p>Tipo Atividade: {{ $activity->type }}</p>
-    <p>Local: {{ $activity->local }}</p>
+    <p>Local: {{ $activity->place }}</p>
     <p>Vagas: {{ $activity->vacancies }}</p>
     <p>Instruções: {{ $activity->instructions }}</p>
     <p>Responsável: {{ $activity->responsible }}</p>
-    <p>Início: {{ $activity->start_date }}</p>
-    <p>Fim: {{ $activity->end_date }}</p>
+    <p>Início: {{ $activity->startDate() }}</p>
+    <p>Fim: {{ $activity->endDate() }}</p>
 </x-app-layout>

@@ -1,9 +1,7 @@
 <x-app-layout>
-    <x-slot name="title">Nova Atividade</x-slot>
-
-    <form action="{{ route('activities.store') }}" method="post" class="row g-3">
+    <x-slot name="title">Nova Atividade - {{ $event->name }}</x-slot>
+    <form action="{{ route('events.activities.store', $event) }}" method="post" class="row g-3">
         @csrf
-
         <div class="col-md-6">
             <label for="name" class="form-label">{{ __('Name') }}</label>
             <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
@@ -55,9 +53,9 @@
         </div>
 
         <div class="col-md-6">
-            <label for="local" class="form-label">Local</label>
-            <input id="local" type="text" class="form-control @error('local') is-invalid @enderror" name="local" value="{{ old('local') }}" autocomplete="local">
-            @error('local')
+            <label for="place" class="form-label">Local</label>
+            <input id="place" type="text" class="form-control @error('place') is-invalid @enderror" name="place" value="{{ old('place') }}" autocomplete="place">
+            @error('place')
                 <div class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </div>
@@ -95,7 +93,7 @@
         </div>
 
         <div class="col-sm-12">
-            <button type="submit" class="btn btn-primary">{{ __('Register') }}</button>
+            <button type="submit" class="btn btn-primary">Salvar</button>
         </div>
     </form>
 

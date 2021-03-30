@@ -3,9 +3,12 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Public\HomeController;
+
 use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\Admin\UsersController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\EventController;
+use App\Http\Controllers\Admin\ActivityController;
+use App\Http\Controllers\Admin\ImageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,13 +23,13 @@ use App\Http\Controllers\Admin\EventController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware('auth')->group(function () {
     Route::prefix('admin')->group(function () {
         Route::get('/', [AdminController::class, 'index'])->name('admin.home');
-        Route::resources([
-            'users' => UsersController::class,
-            'events' => EventController::class
-        ]);
+        Route::resource('users', UserController::class);
+        Route::resource('events', EventController::class);
+        Route::resource('events.activities', ActivityController::class)->shallow();
+        Route::resource('events.images', ImageController::class)->shallow();
     });
 });
 

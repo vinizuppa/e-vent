@@ -30,6 +30,16 @@ class Event extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function activities()
+    {
+        return $this->hasMany(Activity::class);
+    }
+
+    public function images()
+    {
+        return $this->hasMany(Image::class);
+    }
+
     public function startDate()
     {
         return date('d/m/Y H:i', strtotime($this->start_date));
