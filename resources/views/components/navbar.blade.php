@@ -1,4 +1,4 @@
-<nav class="navbar sticky-top navbar-expand-md navbar-light bg-white shadow-sm">
+<nav class="navbar sticky-top navbar-expand-md navbar-light bg-white shadow">
     <div class="container-fluid">
         <a class="navbar-brand" href="{{ url('/') }}">
             <x-application-logo width="150" />
@@ -43,7 +43,7 @@
                 @else
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('users.show', [Auth::user()->id]) }}">
-                            <i class="bi bi-person-fill"></i>
+                            <img src="https://gravatar.com/avatar/{{ md5(trim(strtolower(Auth::user()->email))) }}?s=25&d=https://ui-avatars.com/api/{{ trim(str_replace(' ', '+', Auth::user()->name)) }}/25/dc3545/fff/1" alt="Foto {{Auth::user()->name}}" class="img-fluid rounded-circle" />
                             {{ Auth::user()->name }}
                         </a>
                     </li>
