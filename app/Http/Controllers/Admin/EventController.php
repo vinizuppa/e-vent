@@ -19,7 +19,7 @@ class EventController extends Controller
     public function index()
     {
         return view('admin.event.index', [
-            'events' => Event::all()->sortBy('id')
+            'events' => Event::paginate(5)
         ]);
     }
 

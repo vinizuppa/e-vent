@@ -59,6 +59,9 @@
                 @endforelse
             </tbody>
         </table>
+        <div class="d-flex justify-content-center">
+            {!! $users->links() !!}
+        </div>
     </div>
     <script>
         var modalExcluir = document.getElementById('modalExcluir');

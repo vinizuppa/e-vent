@@ -1,14 +1,14 @@
 <div class="card shadow">
     <div class="card-body">
-        <ul class="nav flex-column">
-            <li class="nav-item bg-danger mb-2 rounded">
-                <a class="nav-link text-light fs-6 fw-bold" href="{{ route('users.index') }}">
+        <ul class="nav row g-2">
+            <li class="nav-item bg-danger rounded">
+                <a class="nav-link text-light" href="{{ route('users.index') }}">
                     <i class="bi bi-person-fill"></i>
                     Usuários
                 </a>
             </li>
-            <li class="nav-item bg-danger mb-2 rounded">
-                <a class="nav-link text-light fs-6 fw-bold" href="{{ route('events.index') }}">
+            <li class="nav-item bg-danger rounded">
+                <a class="nav-link text-light" href="{{ route('events.index') }}">
                 <i class="fas fa-calendar-alt"></i>
                     Eventos
                 </a>

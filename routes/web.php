@@ -22,6 +22,8 @@ use App\Http\Controllers\Admin\ImageController;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::post('/', [HomeController::class, 'search'])->name('public.events.search');
+Route::get('/results', [HomeController::class, 'results'])->name('public.events.results');
 
 Route::middleware('auth')->group(function () {
     Route::prefix('admin')->group(function () {
