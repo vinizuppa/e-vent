@@ -6,6 +6,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}" />
         <title>{{ config('app.name', 'E-vent') }}</title>
         <link rel="shortcut icon" href="{{ $favicon ?? asset('img/favicon.png') }}" />
+        <script data-ad-client="ca-pub-8771460495164377" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         <!-- CSS Boostrap, Bootstrap Icons -->
         <link rel="stylesheet" href="{{ url(mix('css/bootstrap.css')) }}" />
         <link rel="stylesheet" href="{{ url(mix('css/bootstrap-icons.css')) }}" />
@@ -22,7 +23,7 @@
         <!-- JS Font Awesome -->
         <script src="{{ url(mix('js/font-awesome.js')) }}"></script>
         <!-- JS app -->
-        <script src="{{ url(mix('js/app.js')) }}"></script>
+        <script src="{{ url(mix('js/app.js')) }}"></script>        
         {{ $js ?? '' }}
     </body>
 </html>
