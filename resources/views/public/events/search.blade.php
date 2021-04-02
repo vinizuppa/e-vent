@@ -5,7 +5,7 @@
                 <a href="{{ route('home') }}" class="btn btn-primary">Voltar</a>
             </div>
             <div class="col-11">
-                <h2>Resultados da busca para "{{ $search }}" ({{ count($events) }} eventos encontrados)</h2>
+                <h2>{{ count($events) }} resultados da busca para "{{ $search }}"</h2>
             </div>
         </div>
         <div class="row row-cols-1">
