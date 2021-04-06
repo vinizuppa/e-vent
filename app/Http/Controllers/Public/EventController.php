@@ -13,7 +13,7 @@ class EventController extends Controller
     {
         // Eventos atuais (data não passou)
         //$events = Event::where('end_date', '<=', date('Y-m-d'))->where('name', 'like', '%' . $request->search . '%')->get();
-        $search = $request->search;
+        $search = $request->query('event');
         $events = Event::where('name', 'like', '%' . $search . '%')->get();
         return view('public.events.search', [
             'events' => $events,

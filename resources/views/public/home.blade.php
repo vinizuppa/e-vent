@@ -45,10 +45,9 @@
         <!-- Form busca de eventos -->
         <div class="row my-4">
             <div class="d-flex justify-content-center">
-                <form class="col-10 col-md-8 align-items-center shadow" action="{{ route('public.events.search') }}" method="post">
-                    @csrf
+                <form class="col-10 col-md-8 align-items-center shadow" action="{{ route('public.events.search') }}" method="get">                    
                     <div class="input-group">
-                        <input type="text" class="form-control form-control-lg" placeholder="Encontre um evento" name="search">
+                        <input type="text" class="form-control form-control-lg" placeholder="Encontre um evento" name="event">
                         <button class="btn btn-danger" type="submit">
                             <i class="bi bi-search text-light"></i>
                         </button>
