@@ -7,7 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Event;
 
 class HomeController extends Controller
-{
+{    
+    
     public function index()
     {
         // Eventos atuais (data não passou)
@@ -20,14 +21,4 @@ class HomeController extends Controller
 
     }
 
-    public function search(Request $request)
-    {
-        // Eventos atuais (data não passou)
-        //$events = Event::where('start_date', '>=', date('Y-m-d'))->where('name', 'like', '%' . $request->search . '%')->get();
-        $events = Event::where('name', 'like', '%' . $request->search . '%')->get();
-        return view('public.events.search', [
-            'events' => $events,
-            'search' => $request->search
-        ]);
-    }
 }

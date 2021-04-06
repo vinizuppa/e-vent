@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Public\HomeController;
+use App\Http\Controllers\Public\EventController as PublicEvent;
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\UserController;
@@ -22,8 +23,8 @@ use App\Http\Controllers\Admin\ImageController;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::post('/', [HomeController::class, 'search'])->name('public.events.search');
-Route::get('/results', [HomeController::class, 'results'])->name('public.events.results');
+Route::post('/search', [PublicEvent::class, 'search'])->name('public.events.search');
+Route::get('/details/{id}', [PublicEvent::class, 'detail'])->name('public.events.detail');
 
 Route::middleware('auth')->group(function () {
     Route::prefix('admin')->group(function () {
