@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6">
-                <div class="card">
+                <div class="card shadow-sm">
                     <div class="card-header bg-danger fs-5 text-light">
                         <i class="bi bi-box-arrow-in-right"></i>
                         {{ __('Login') }}
