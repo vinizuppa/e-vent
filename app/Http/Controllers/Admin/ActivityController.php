@@ -18,7 +18,7 @@ class ActivityController extends Controller
     public function index(Event $event)
     {
         return view('admin.activity.index', [
-            'activities' => $event->activities()->orderBy('id')->get(),
+            'activities' => $event->activities()->paginate(5),
             'event' => $event
         ]);
     }

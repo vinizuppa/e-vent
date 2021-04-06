@@ -28,10 +28,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
         return view('admin.user.show', [
-            'user' => User::findOrFail($id)
+            'user' => $user
         ]);
     }
 
@@ -60,7 +60,7 @@ class UserController extends Controller
             'username' => 'nullable|string|max:255|unique:users'
         ]);
 
-        $user = User::create([
+        User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
@@ -78,10 +78,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
         return view('admin.user.edit', [
-            'user' => User::findOrFail($id)
+            'user' => $user
         ]);
     }
 
@@ -92,9 +92,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        User::where('id', $id)->update([
+        $user->update([
             'name' => $request->name,
             'email' => $request->email,
             'username' => $request->username,
@@ -110,9 +110,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        User::destroy($id);
+        $user->delete();
 
         return redirect()->route('users.index');
     }

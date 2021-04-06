@@ -24,6 +24,19 @@ class EventController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Event  $event
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Event $event)
+    {
+        return view('admin.event.show', [
+            'event' => $event
+        ]);
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -64,19 +77,6 @@ class EventController extends Controller
         ]);
 
         return redirect()->route('events.index');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Event  $event
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Event $event)
-    {
-        return view('admin.event.show', [
-            'event' => $event
-        ]);
     }
 
     /**
