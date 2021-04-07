@@ -14,6 +14,14 @@
         <!-- CSS app -->
         <link rel="stylesheet" href="{{ url(mix('css/app.css')) }}" />
         {{ $css ?? '' }}
+        <!-- Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-6PSWY8TH10"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-6PSWY8TH10');
+        </script>
     </head>
     <body>
         {{ $slot }}
@@ -22,7 +30,7 @@
         <!-- JS Font Awesome -->
         <script src="{{ url(mix('js/font-awesome.js')) }}"></script>
         <!-- JS app -->
-        <script src="{{ url(mix('js/app.js')) }}"></script>        
+        <script src="{{ url(mix('js/app.js')) }}"></script>                      
         {{ $js ?? '' }}
     </body>
 </html>
