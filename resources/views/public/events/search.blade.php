@@ -1,11 +1,11 @@
 <x-guest-layout>
     <div class="container">
-        <div class="row my-3">
-            <div class="col-1">
-                <a href="{{ route('home') }}" class="btn btn-primary">Voltar</a>
+        <div class="row">
+            <div class="col-2 my-2">
+                <a href="{{ route('home') }}" class="btn btn-danger">Voltar</a>
             </div>
-            <div class="col-11">
-                <h2>{{ count($events) }} resultados da busca para "{{ $search }}"</h2>
+            <div class="col-10 my-2">
+                <h2>{{ $events->count() > 0 ? $events->count() . ' resultados' : 'Nenhum resultado' }} para "{{ $search }}"</h2>
             </div>
         </div>
         <div class="row row-cols-1">
@@ -30,7 +30,7 @@
                     </div>
                 </div>
             @empty
-                <p>Nenhum evento encontrado</p>
+                <h4>Nenhum evento encontrado</h4>
             @endforelse
         </div>
     </div>
