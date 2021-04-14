@@ -45,7 +45,7 @@
         <!-- Form busca de eventos -->
         <div class="row my-4">
             <div class="d-flex justify-content-center">
-                <form class="col-10 col-md-8 align-items-center shadow" action="{{ route('public.events.search') }}" method="get">                    
+                <form class="col-10 col-md-8 align-items-center shadow" action="{{ route('public.events.search') }}" method="get">
                     <div class="input-group">
                         <input type="text" class="form-control form-control-lg" placeholder="Encontre um evento" name="event">
                         <button class="btn btn-danger" type="submit">
@@ -65,7 +65,7 @@
             @forelse ($events as $event)
                 <div class="col">
                     <div class="card shadow">
-                        <img src="https://agenciabrasilia.df.gov.br/wp-conteudo/uploads/2019/05/31.05.2019-Festas-juninas-animam-os-brasilienses-nos-meses-de-junho-e-julho-mas-%C3%A9-preciso-ter-cuidado-com-os-fogos-de-artif%C3%ADcio.-Foto-Pedro-Ventura-Ag%C3%AAncia-Bras%C3%ADlia.jpeg" class="card-img-top" alt="">
+                        <img src="{{ count($event->images) > 0 ? $event->images[0]->path : asset('img/event/default.jpg') }}" class="card-img-top" alt="{{ $event->name }}">
                         <div class="card-body">
                             <h5 class="card-title">{{ $event->name }}</h5>
                             <p class="card-text">Inicio: {{ $event->startDate() }}</p>
@@ -79,7 +79,7 @@
                 <h2>Nenhum evento próximo</h2>
             @endforelse
         </div>
-        <div class="row my-2"> 
+        <div class="row my-2">
             <div class="d-flex justify-content-center">
                 {!! $events->links() !!}
             </div>

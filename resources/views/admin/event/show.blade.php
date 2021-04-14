@@ -1,6 +1,18 @@
 <x-app-layout>
     <x-slot name="title">Informações</x-slot>
     <div class="row">
+        <div class="col-md-4">
+            @forelse ($event->images as $image)
+                <div class="row">
+                    <img src="{{ Storage::url($image->path) }}" alt="{{ $event->name }}" class="img-responsive">
+                </div>
+            @empty
+                <div class="row">
+                    <img src="{{ asset("img/event/default.jpg") }}" alt="Imagem de exemplo" class="img-responsive">
+                    <small>* Imagem de exemplo</small>
+                </div>
+            @endforelse
+        </div>
         <div class="col-md-8">
             <form class="g-2">
                 <div class="mb-3 row">
@@ -12,7 +24,7 @@
                     <div class="col-sm-6">
                         <input type="text" class="form-control" value="{{ $event->name }}" disabled>
                     </div>
-                </div>        
+                </div>
                 <div class="mb-3 row">
                     <label for="description" class="col-sm-2 col-form-label">Descrição</label>
                     <div class="col-sm-10">
@@ -50,8 +62,6 @@
                 </div>
             </form>
         </div>
-        <div class="col-md-4">
-            <p>Exibir imagens do evento, banners, etc.</p>
-        </div>
+
     </div>
 </x-app-layout>

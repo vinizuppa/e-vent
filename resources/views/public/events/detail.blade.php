@@ -1,10 +1,10 @@
 <x-guest-layout>
     <div class="w-100 position-absolute ms-0" style="z-index: 1; top: -300px;">
-        <img src="https://blog.vulpi.com.br/wp-content/uploads/2018/03/eventos-corporativos.jpg" alt="Banner do evento" class="w-100" style="filter: blur(13px);">
+        <img src="{{ count($event->images) > 0 ? $event->images[0]->path : asset('img/event/default.jpg') }}" alt="Banner do evento" class="w-100" style="filter: blur(13px);">
     </div>
     <div class="container d-flex justify-content-center flex-wrap position-relative" style="z-index: 10;">
         <div class="justify-content-center shadow w-100">
-            <img src="https://blog.vulpi.com.br/wp-content/uploads/2018/03/eventos-corporativos.jpg" alt="Banner do evento" class="w-100 img-fluid rounded">
+            <img src="{{ count($event->images) > 0 ? $event->images[0]->path : asset('img/event/default.jpg') }}" alt="Banner do evento" class="w-100 img-fluid rounded">
         </div>
         <div class="card shadow rounded-3 border border-danger w-75" style="top: -15px;">
             <div class="row g-0">
@@ -49,5 +49,5 @@
                 </tbody>
             </table>
         </div>
-    </div>    
+    </div>
 </x-guest-layout>
