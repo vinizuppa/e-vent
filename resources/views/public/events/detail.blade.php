@@ -19,7 +19,7 @@
                         <h5 class="card-text my-3 text-dark"><i class="mx-2 bi bi-calendar2-x text-danger"></i>{{ $event->endDate() }}</h5>
                         <h5 class="card-text my-3 text-dark"><i class="mx-2 bi bi-cash-stack text-danger"></i>{{ $event->registration_fee }}</h5>
                         <div class="d-flex justify-content-end">
-                            <a href="#" class="btn btn-danger">Inscreva-se</a>
+                            <a href="{{ route('public.events.subscribe', $event->id) }}" class="btn btn-danger">Inscreva-se</a>
                         </div>
                     </div>
                 </div>
