@@ -1,20 +1,23 @@
 <x-guest-layout>
-    <div class="container">
-        <div class="card shadow bg-dark rounded-3">
+    <div class="w-100 position-absolute ms-0" style="z-index: 1; top: -300px;">
+        <img src="https://blog.vulpi.com.br/wp-content/uploads/2018/03/eventos-corporativos.jpg" alt="Banner do evento" class="w-100" style="filter: blur(13px);">
+    </div>
+    <div class="container d-flex justify-content-center flex-wrap position-relative" style="z-index: 10;">
+        <div class="justify-content-center shadow w-100">
+            <img src="https://blog.vulpi.com.br/wp-content/uploads/2018/03/eventos-corporativos.jpg" alt="Banner do evento" class="w-100 img-fluid rounded">
+        </div>
+        <div class="card shadow rounded-3 border border-danger w-75" style="top: -15px;">
             <div class="row g-0">
-                <div class="col-md-4">
-                    <img src="http://centralbme.com.br/blog/wp-content/uploads/Como-um-evento-corporativo-pode-ajudar-a-sua-empresa.jpg" alt="Banner do evento" class="w-100 h-100 img-fluid">
-                </div>
-                <div class="col-md-8">
+                <div class="col-md-12">
                     <div class="card-body">
-                        <h2 class="card-title mx-2 text-white">Informações do Evento</h2>
-                        <h4 class="card-text my-3 text-white"><i class="mx-2 bi bi-bookmark-star text-danger"></i>{{ $event->name }}</h4>
-                        <h4 class="card-text my-3 text-white"><i class="mx-2 bi bi-file-earmark-text text-danger"></i>{{ $event->description }}</h4>
-                        <h4 class="card-text my-3 text-white"><i class="mx-2 bi bi-geo-alt text-danger"></i>{{ $event->address }}</h4>
-                        <h4 class="card-text my-3 text-white"><i class="mx-2 bi bi-telephone text-danger"></i>{{ $event->phone }}</h4>
-                        <h4 class="card-text my-3 text-white"><i class="mx-2 bi bi-calendar2-check text-danger"></i>{{ $event->startDate() }}</h4>
-                        <h4 class="card-text my-3 text-white"><i class="mx-2 bi bi-calendar2-x text-danger"></i>{{ $event->endDate() }}</h4>
-                        <h4 class="card-text my-3 text-white"><i class="mx-2 bi bi-cash-stack text-danger"></i>{{ $event->registration_fee }}</h4>
+                        <h3 class="card-title mx-2 text-dark">Informações do Evento</h3>
+                        <h5 class="card-text my-3 text-dark"><i class="mx-2 bi bi-bookmark-star text-danger"></i>{{ $event->name }}</h5>
+                        <h5 class="card-text my-3 text-dark"><i class="mx-2 bi bi-file-earmark-text text-danger"></i>{{ $event->description }}</h5>
+                        <h5 class="card-text my-3 text-dark"><i class="mx-2 bi bi-geo-alt text-danger"></i>{{ $event->address }}</h5>
+                        <h5 class="card-text my-3 text-dark"><i class="mx-2 bi bi-telephone text-danger"></i>{{ $event->phone }}</h5>
+                        <h5 class="card-text my-3 text-dark"><i class="mx-2 bi bi-calendar2-check text-danger"></i>{{ $event->startDate() }}</h5>
+                        <h5 class="card-text my-3 text-dark"><i class="mx-2 bi bi-calendar2-x text-danger"></i>{{ $event->endDate() }}</h5>
+                        <h5 class="card-text my-3 text-dark"><i class="mx-2 bi bi-cash-stack text-danger"></i>{{ $event->registration_fee }}</h5>
                         <div class="d-flex justify-content-end">
                             <a href="#" class="btn btn-danger">Inscreva-se</a>
                         </div>
@@ -23,12 +26,12 @@
             </div>
         </div>
         <div class="table-responsive mx-auto mt-3 rounded-3">
-            <table class="table table-dark table-striped">
+            <table class="table table-blue table-striped">
                 <thead>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Instruções</th>
-                    <th scope="col">Tipo</th>
-                    <th scope="col">Vagas disponíveis</th>
+                    <th scope="col"><h5 class="text-danger">Nome</h5></th>
+                    <th scope="col"><h5 class="text-danger">Instruções</h5></th>
+                    <th scope="col"><h5 class="text-danger">Tipo</h5></th>
+                    <th scope="col"><h5 class="text-danger">Vagas disponíveis</h5></th>
                 </thead>
                 <tbody>
                     @forelse ($event->activities as $activity)
