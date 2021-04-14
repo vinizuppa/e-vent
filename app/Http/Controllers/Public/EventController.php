@@ -27,4 +27,11 @@ class EventController extends Controller
             'event' => $event
         ]);
     }
+
+    public function subscribe(Event $event)
+    {
+        return view('public.events.subscribe', [
+            'event' => $event
+        ]);
+    }
 }

@@ -25,6 +25,8 @@ use App\Http\Controllers\Admin\ImageController;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/search', [PublicEvent::class, 'search'])->name('public.events.search');
 Route::get('/detail/{event}', [PublicEvent::class, 'detail'])->name('public.events.detail');
+Route::get('/subscribe/{event}', [PublicEvent::class, 'subscribe'])->name('public.events.subscribe');
+
 
 Route::middleware('auth')->group(function () {
     Route::prefix('admin')->group(function () {
