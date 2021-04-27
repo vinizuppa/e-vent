@@ -13,6 +13,8 @@
         <link rel="stylesheet" href="{{ url(mix('css/font-awesome.css')) }}" />
         <!-- CSS app -->
         <link rel="stylesheet" href="{{ url(mix('css/app.css')) }}" />
+        <!-- CSS Friconix --> 
+        <script defer src="https://friconix.com/cdn/friconix.js"> </script>
         <!-- Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-6PSWY8TH10"></script>
         <script>
