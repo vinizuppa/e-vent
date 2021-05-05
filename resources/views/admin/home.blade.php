@@ -1,4 +1,7 @@
 <x-app-layout>
     <x-slot name="title">Bem-vindo, {{ Auth::user()->name }}!</x-slot>
-    <p>Adicionar gráficos e informações aqui</p>
+    <div class="card shadow">
+        <div class="card-body">
+        </div>
+    </div>
 </x-app-layout>

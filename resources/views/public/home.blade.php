@@ -65,13 +65,13 @@
             @forelse ($events as $event)
                 <div class="col">
                     <div class="card shadow">
-                        <img src="{{ count($event->images) > 0 ? $event->images[0]->path : asset('img/event/default.jpg') }}" class="card-img-top" alt="{{ $event->name }}">
+                        <img src="{{ count($event->images) > 0 ? Storage::url($event->images[0]->path) : asset('img/event/default.jpg') }}" class="card-img-top" alt="{{ $event->name }}">
                         <div class="card-body">
                             <h5 class="card-title">{{ $event->name }}</h5>
                             <p class="card-text">Inicio: {{ $event->startDate() }}</p>
                             <p class="card-text">Fim: {{ $event->endDate() }}</p>
                             <p class="card-text">Valor: R$ {{ $event->registration_fee }}</p>
-                            <a href="{{ route('public.events.detail', $event->id) }}" class="btn btn-danger">Ver mais</a>
+                            <a href="{{ route('public.events.detail', $event->id) }}" class="btn btn-outline-danger w-100">VER MAIS</a>
                         </div>
                     </div>
                 </div>

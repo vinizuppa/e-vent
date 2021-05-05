@@ -1,14 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Public;
+namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Models\Event;
 
 class HomeController extends Controller
-{    
-    
+{
+
     public function index()
     {
         // Eventos atuais (data não passou)
@@ -18,7 +16,6 @@ class HomeController extends Controller
         return view('public.home', [
             'events' => $events
         ]);
-
     }
 
 }
