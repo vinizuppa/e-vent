@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="title">Editar Evento</x-slot>
 
-    <form action="{{ route('events.update', [$event->id]) }}" method="post" class="row g-3">
+    <form action="{{ route('events.update', [$event->id]) }}" method="post" enctype="multipart/form-data" class="row g-3">
         @csrf
         @method('PUT')
 
@@ -74,9 +74,18 @@
                 </span>
             @enderror
         </div>
+        <div class="col-md-6">
+            <label for="image" class="form-label">Imagem</label>
+            <input id="image" type="file" name="image" class="form-control @error('image') is-invalid @enderror">
+            @error('image')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
 
         <div class="col-sm-12">
-            <button type="submit" class="btn btn-primary">{{ __('Register') }}</button>
+            <button type="submit" class="btn btn-primary">Salvar</button>
         </div>
     </form>
 

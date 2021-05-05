@@ -94,7 +94,7 @@
         </div>
 
         <div class="col-sm-12">
-            <button type="submit" class="btn btn-primary">{{ __('Register') }}</button>
+            <button type="submit" class="btn btn-primary">Salvar</button>
         </div>
     </form>
 

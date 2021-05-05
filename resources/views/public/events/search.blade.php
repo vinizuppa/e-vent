@@ -9,12 +9,12 @@
             </div>
         </div>
         <div class="row row-cols-1">
-            @forelse ($events as $event)  
-                <div class="col my-2">      
+            @forelse ($events as $event)
+                <div class="col my-2">
                     <div class="card shadow">
                         <div class="row g-2">
                             <div class="col-6">
-                                <img src="https://agenciabrasilia.df.gov.br/wp-conteudo/uploads/2019/05/31.05.2019-Festas-juninas-animam-os-brasilienses-nos-meses-de-junho-e-julho-mas-%C3%A9-preciso-ter-cuidado-com-os-fogos-de-artif%C3%ADcio.-Foto-Pedro-Ventura-Ag%C3%AAncia-Bras%C3%ADlia.jpeg" class="img-fluid rounded shadow" alt="">
+                                <img src="{{ count($event->images) > 0 ? Storage::url($event->images[0]->path) : asset('img/event/default.jpg') }}" class="img-fluid rounded shadow" alt="{{ $event->name }}" width="100%">
                             </div>
                             <div class="col-6">
                                 <div class="card-body">

@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="{{ url(mix('css/font-awesome.css')) }}" />
         <!-- CSS app -->
         <link rel="stylesheet" href="{{ url(mix('css/app.css')) }}" />
-        <!-- CSS Friconix --> 
+        <!-- CSS Friconix -->
         <script defer src="https://friconix.com/cdn/friconix.js"> </script>
         <!-- Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-6PSWY8TH10"></script>
@@ -32,7 +32,13 @@
         <!-- JS Font Awesome -->
         <script src="{{ url(mix('js/font-awesome.js')) }}"></script>
         <!-- JS app -->
-        <script src="{{ url(mix('js/app.js')) }}"></script>                      
+        <script src="{{ url(mix('js/app.js')) }}"></script>
         {{ $body ?? '' }}
+        <script>
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl);
+            });
+        </script>
     </body>
 </html>

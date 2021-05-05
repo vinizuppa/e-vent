@@ -2,14 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\Public\HomeController;
-use App\Http\Controllers\Public\EventController as PublicEvent;
-
-use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\Admin\UserController;
-use App\Http\Controllers\Admin\EventController;
-use App\Http\Controllers\Admin\ActivityController;
-use App\Http\Controllers\Admin\ImageController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ActivityController;
+use App\Http\Controllers\ImageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,10 +21,10 @@ use App\Http\Controllers\Admin\ImageController;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/search', [PublicEvent::class, 'search'])->name('public.events.search');
+Route::get('/search', [EventController::class, 'search'])->name('public.events.search');
 Route::prefix('/event/{event}')->group(function () {
-    Route::get('detail', [PublicEvent::class, 'detail'])->name('public.events.detail');
-    Route::get('subscribe', [PublicEvent::class, 'subscribe'])->name('public.events.subscribe');
+    Route::get('detail', [EventController::class, 'detail'])->name('public.events.detail');
+    Route::get('subscribe', [EventController::class, 'subscribe'])->name('public.events.subscribe')->middleware('auth');
 });
 
 Route::middleware('auth')->group(function () {

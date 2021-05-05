@@ -14,7 +14,7 @@
                 @else
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('admin.home') }}">
-                            <i class="bi bi-house-fill"></i>
+                            <i class="fas fa-home"></i>
                             Painel - {{ Auth::user()->group }}
                         </a>
                     </li>
@@ -27,7 +27,7 @@
                     @if (Route::has('register'))
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('register') }}">
-                                <i class="bi bi-person-plus-fill"></i>
+                                <i class="fas fa-user-plus"></i>
                                 {{ __('Register') }}
                             </a>
                         </li>
@@ -35,7 +35,7 @@
                     @if (Route::has('login'))
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('login') }}">
-                                <i class="bi bi-box-arrow-in-right"></i>
+                                <i class="fas fa-sign-in-alt"></i>
                                 {{ __('Login') }}
                             </a>
                         </li>

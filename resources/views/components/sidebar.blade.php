@@ -2,8 +2,14 @@
     <div class="card-body">
         <ul class="nav row g-2">
             <li class="nav-item bg-danger rounded">
+                <a class="nav-link text-light" href="{{ route('admin.home') }}">
+                    <i class="fas fa-home"></i>
+                    Painel
+                </a>
+            </li>
+            <li class="nav-item bg-danger rounded">
                 <a class="nav-link text-light" href="{{ route('users.index') }}">
-                    <i class="bi bi-person-fill"></i>
+                    <i class="fas fa-user"></i>
                     Usuários
                 </a>
             </li>
