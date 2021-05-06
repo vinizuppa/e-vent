@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-slot name="title">Editar Atividade</x-slot>
+    <x-slot name="title">Editar atividade</x-slot>
     <form action="{{ route('activities.update', $activity) }}" method="post" class="row g-3">
         @csrf
         @method('PUT')

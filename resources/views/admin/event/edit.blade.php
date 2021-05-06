@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-slot name="title">Editar Evento</x-slot>
+    <x-slot name="title">Editar</x-slot>
 
     <form action="{{ route('events.update', [$event->id]) }}" method="post" enctype="multipart/form-data" class="row g-3">
         @csrf

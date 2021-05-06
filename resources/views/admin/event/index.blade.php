@@ -21,13 +21,13 @@
                         <a href="{{ route('events.activities.index', $event) }}" class="btn btn-dark" data-bs-toggle="tooltip" data-bs-placement="top" title="Atividades">
                             <i class="fas fa-list-alt"></i>
                         </a>
-                        <a href="{{ route('events.show', $event) }}" class="col btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Info">
+                        <a href="{{ route('events.show', $event) }}" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Info">
                             <i class="fas fa-info-circle"></i>
                         </a>
-                        <a href="{{ route('events.edit', $event) }}" class="col btn btn-warning" style="color: white" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">
+                        <a href="{{ route('events.edit', $event) }}" class="btn btn-warning" style="color: white" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">
                             <i class="fas fa-pencil-alt"></i>
                         </a>
-                        <a href="#" id="btnExcluir" class="col btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalExcluir" data-event="{{ $event }}" data-route="{{ route('events.destroy', $event->id) }}" data-bs-toggle="tooltip" data-bs-placement="top" title="Desativar">
+                        <a href="#" id="btnExcluir" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalExcluir" data-event="{{ $event }}" data-route="{{ route('events.destroy', $event->id) }}" data-bs-toggle="tooltip" data-bs-placement="top" title="Desativar">
                             <i class="fas fa-trash"></i>
                         </a>
                     </div>
@@ -45,7 +45,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Excluir evento</h5>
+                    <h2 class="modal-title">Excluir</h2>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">

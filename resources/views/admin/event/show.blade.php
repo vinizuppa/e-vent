@@ -2,66 +2,22 @@
     <x-slot name="title">Informações</x-slot>
     <div class="row">
         <div class="col-md-4">
-            @forelse ($event->images as $image)
-                <div class="row">
-                    <img src="{{ Storage::url($image->path) }}" alt="{{ $event->name }}" class="img-responsive">
-                </div>
-            @empty
-                <div class="row">
-                    <img src="{{ asset("img/event/default.jpg") }}" alt="Imagem de exemplo" class="img-responsive">
-                    <small>* Imagem de exemplo</small>
-                </div>
-            @endforelse
+            <div class="card shadow">
+                <img src="{{ count($event->images) > 0 ? Storage::url($event->images[0]->path) : asset('img/event/default.jpg') }}" alt="{{ $event->name }}" class="card-img">
+            </div>
         </div>
         <div class="col-md-8">
-            <form class="g-2">
-                <div class="mb-3 row">
-                    <label for="id" class="col-sm-2 col-form-label">ID</label>
-                    <div class="col-sm-2">
-                        <input type="text" class="form-control" value="{{ $event->id }}" disabled>
-                    </div>
-                    <label for="name" class="col-sm-2 col-form-label">Nome</label>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control" value="{{ $event->name }}" disabled>
-                    </div>
+            <div class="card shadow">
+                <div class="card-body">
+                    <h4 class="card-title">{{ $event->name }}</h4>
+                    <p class="card-text">Descrição: {{ $event->description }}</p>
+                    <p class="card-text">Endereço: {{ $event->address }}</p>
+                    <p class="card-text">Telefone: {{ $event->phone }}</p>
+                    <p class="card-text">Valor inscrição: {{ $event->registration_fee }}</p>
+                    <p class="card-text">Início: {{ $event->startDate() }}</p>
+                    <p class="card-text">Fim: {{ $event->endDate() }}</p>
                 </div>
-                <div class="mb-3 row">
-                    <label for="description" class="col-sm-2 col-form-label">Descrição</label>
-                    <div class="col-sm-10">
-                        <textarea class="form-control" rows="3" disabled>{{ $event->description }}</textarea>
-                    </div>
-                </div>
-                <div class="mb-3 row">
-                    <label for="address" class="col-sm-2 col-form-label">Endereço</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="address" value="{{ $event->address }}" disabled>
-                    </div>
-                </div>
-                <div class="mb-3 row">
-                    <label for="phone" class="col-sm-2 col-form-label">Telefone</label>
-                    <div class="col-sm-4">
-                        <input type="text" class="form-control" id="phone" value="{{ $event->phone }}" disabled>
-                    </div>
-                    <label for="registration_fee" class="col-sm-2 col-form-label">Valor inscrição</label>
-                    <div class="col-sm-4">
-                        <div class="input-group">
-                            <span class="input-group-text">R$</span>
-                            <input type="text" class="form-control" id="registration_fee" value="{{ $event->registration_fee }}" disabled>
-                        </div>
-                    </div>
-                </div>
-                <div class="mb-3 row">
-                    <label for="start_date" class="col-sm-2 col-form-label">Início</label>
-                    <div class="col-sm-4">
-                        <input type="text" class="form-control" id="start_date" value="{{ $event->startDate() }}" disabled>
-                    </div>
-                    <label for="end_date" class="col-sm-2 col-form-label">Fim</label>
-                    <div class="col-sm-4">
-                        <input type="text" class="form-control" id="end_date" value="{{ $event->endDate() }}" disabled>
-                    </div>
-                </div>
-            </form>
+            </div>
         </div>
-
     </div>
 </x-app-layout>

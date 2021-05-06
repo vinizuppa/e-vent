@@ -1,5 +1,8 @@
 <x-app-layout>
-    <x-slot name="title">Informações da Atividade</x-slot>
+    <x-slot name="title">Informações Atividade</x-slot>
+    <div class="card shadow">
+
+    </div>
     <form class="row g-2">
         <div class="mb-3 row">
             <label for="id" class="col-sm-1 col-form-label">ID: </label>
@@ -12,7 +15,7 @@
             <div class="col-sm-3">
                 <input type="text" class="form-control" id="name" value="{{ $activity->name }}" disabled>
             </div>
-        </div>        
+        </div>
         <div class="mb-3 row">
             <label for="description" class="col-sm-1 col-form-label">Descrição: </label>
             <div class="col-sm-3">
