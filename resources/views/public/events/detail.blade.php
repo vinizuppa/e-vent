@@ -1,9 +1,9 @@
 <x-guest-layout>
-    <div class="container-fluid d-flex justify-content-center flex-wrap position-relative" style="z-index: 10;">        
-        <div class="card shadow rounded-3 border border-danger w-90 d-inline" style="top: -15px;">
+    <div class="container-fluid d-flex justify-content-center flex-wrap mt-2">        
+        <div class="card shadow w-90">
             <div class="row g-0">
                 <div class="justify-content-center col-md-6 align-middle">
-                    <img src="{{ count($event->images) > 0 ? $event->images[0]->path : asset('img/event/default.jpg') }}" alt="Banner do evento" class="w-100 img-fluid rounded">
+                    <img src="{{ count($event->images) > 0 ? Storage::url($event->images[0]->path) : asset('img/event/default.jpg') }}" alt="Banner do evento" class="w-100 img-fluid rounded">
                 </div>
                 <div class="col-md-6">
                     <div class="card-body">
@@ -22,29 +22,27 @@
                 </div>
             </div>
         </div>
-        <div class="table-responsive mx-auto mt-3 rounded-3">
-            <table class="table table-blue table-striped">
-                <thead>
-                    <th scope="col"><h5 class="text-danger">Nome</h5></th>
-                    <th scope="col"><h5 class="text-danger">Instruções</h5></th>
-                    <th scope="col"><h5 class="text-danger">Tipo</h5></th>
-                    <th scope="col"><h5 class="text-danger">Vagas disponíveis</h5></th>
-                </thead>
-                <tbody>
-                    @forelse ($event->activities as $activity)
-                        <tr>
-                            <td>{{ $activity->name }}</td>
-                            <td>{{ $activity->instructions }}</td>
-                            <td>{{ $activity->type }}</td>
-                            <td>{{ $activity->vacancies }}</td>
-                        </tr>
-                    @empty
-                        <tr>
-                            <td colspan="6">Sem dados</td>
-                        <tr>
-                    @endforelse
-                </tbody>
-            </table>
-        </div>
     </div>
+    <div class="container">
+            <div class="list-group my-3">
+                @forelse ($event->activities as $activity)
+                        <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">{{ $activity->name }}</h5>
+                                <small class="text-muted">Inicio: {{ $activity->startDate() }}</small>
+                            </div>
+                            <p class="mb-1">Instruções: {{ $activity->instructions }}</p>
+                            <p class="mb-1">Tipo: {{ $activity->type }}</p>
+                            <small class="text-muted">Vagas disponíveis: {{ $activity->vacancies }}</small>
+                        </a>   
+                @empty
+                        <div class="row justify-content-center">
+                            <div class="alert alert-warning text-center" role="alert">
+                                Sem atividades cadastradas!
+                            </div>
+                        </div>
+                @endforelse
+
+            <div>  
+    </div>              
 </x-guest-layout>
