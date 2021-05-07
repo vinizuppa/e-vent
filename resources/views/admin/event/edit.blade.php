@@ -1,10 +1,8 @@
 <x-app-layout>
-    <x-slot name="title">Editar</x-slot>
-
-    <form action="{{ route('events.update', [$event->id]) }}" method="post" enctype="multipart/form-data" class="row g-3">
+    <x-slot name="title">Editar evento</x-slot>
+    <form action="{{ route('events.update', $event) }}" method="post" enctype="multipart/form-data" class="row g-3">
         @csrf
         @method('PUT')
-
         <div class="col-md-6">
             <label for="name" class="form-label">{{ __('Name') }}</label>
             <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') ?? $event->name }}" required autocomplete="name" autofocus>
@@ -14,7 +12,6 @@
                 </div>
             @enderror
         </div>
-
         <div class="col-md-6">
             <label for="description" class="form-label">Descrição</label>
             <textarea id="description" class="form-control @error('description') is-invalid @enderror" name="description" required rows="2">{{ old('description') ?? $event->description }}</textarea>

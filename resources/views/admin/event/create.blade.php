@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-slot name="title">Novo</x-slot>
+    <x-slot name="title">Novo evento</x-slot>
     <form action="{{ route('events.store') }}" method="post" enctype="multipart/form-data" class="row g-3">
         @csrf
         <div class="col-md-6">
