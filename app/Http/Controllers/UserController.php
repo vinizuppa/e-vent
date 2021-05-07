@@ -58,7 +58,6 @@ class UserController extends Controller
             'password' => 'required|string|confirmed|min:8',
             'username' => 'nullable|string|max:255|unique:users'
         ]);
-
         User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -67,7 +66,6 @@ class UserController extends Controller
             'phone' => $request->phone,
             'group' => 'Organizador'
         ]);
-
         return redirect()->route('users.index');
     }
 
@@ -99,7 +97,6 @@ class UserController extends Controller
             'username' => $request->username,
             'phone' => $request->phone
         ]);
-
         return redirect()->route('users.index');
     }
 
@@ -112,7 +109,6 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         $user->delete();
-
         return redirect()->route('users.index');
     }
 }
