@@ -1,6 +1,9 @@
 <x-guest-layout>
     <div class="container">
-        <div class="row justify-content-center">
+        <div class="row d-flex justify-content-center align-items-center">
+            <div class="col-md-6">
+                <img src="{{  asset('img/register.png') }}" alt="Registro" class="w-75 img-fluid rounded">
+            </div>
             <div class="col-md-6">
                 <div class="card  shadow-sm">
                     <div class="card-header bg-danger fs-5 text-light">
