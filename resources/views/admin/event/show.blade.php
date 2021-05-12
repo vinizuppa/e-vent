@@ -25,22 +25,32 @@
             <h5 class="card-title text-center">Atividades</h5>
         </div>
     </div>
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-2">
-        @forelse ($event->activities as $activity)
-            <div class="col">
-                <div class="card shadow">
-                    <div class="card-body">
-                        <h4 class="card-title">
-                            <a href="{{ route('activities.show', $activity) }}">{{ $activity->name }}</a>
-                        </h4>
-                        <p class="card-text">Início: {{ $activity->startDate() }}</p>
-                        <p class="card-text">Fim: {{ $activity->endDate() }}</p>
-                        <p class="card-text">Vagas: {{ $activity->vacancies }}</p>
+    @if (count($event->activities) > 0)
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-2">
+            @foreach ($event->activities as $activity)
+                <div class="col">
+                    <div class="card shadow">
+                        <div class="card-body">
+                            <h4 class="card-title">{{ $activity->name }}</h4>
+                            <p class="card-text">Descrição: {{ $activity->description }}</p>
+                            <p class="card-text">Início: {{ $activity->startDate() }}</p>
+                            <p class="card-text">Fim: {{ $activity->endDate() }}</p>
+                            <p class="card-text">Vagas: {{ $activity->vacancies }}</p>
+                        </div>
+                        <div class="card-footer text-end">
+                            <a href="{{ route('activities.show', $activity) }}" class="btn btn-primary">
+                                <i class="fas fa-info"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
+            @endforeach
+        </div>
+    @else
+        <div class="card shadow">
+            <div class="card-body">
+                <p class="card-text">Nenhuma atividade cadastrada</p>
             </div>
-        @empty
-            <p>Nenhuma atividade cadastrada</p>
-        @endforelse
-    </div>
+        </div>
+    @endif
 </x-app-layout>

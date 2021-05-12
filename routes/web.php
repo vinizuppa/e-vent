@@ -8,6 +8,7 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\ImageController;
+use App\Http\Controllers\ConfigController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +35,7 @@ Route::middleware('auth')->group(function () {
         Route::resource('events', EventController::class);
         Route::resource('events.activities', ActivityController::class)->shallow();
         Route::resource('events.images', ImageController::class)->shallow();
+        Route::get('/config', [ConfigController::class, 'index'])->name('configs.index');
     });
 });
 

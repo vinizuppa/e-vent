@@ -14,6 +14,7 @@
                             <span class="badge bg-danger mr-2">#{{ $event->id }}</span>
                             {{ $event->name }}
                         </h5>
+                        <p class="card-text">Organizador: {{ $event->user->name }}</p>
                         <p class="card-text">Início: {{ $event->startDate() }}</p>
                         <p class="card-text">Fim: {{ $event->endDate() }}</p>
                         <p class="card-text">{{ $event->registration_fee == 0 ? 'Gratuito' : 'Valor inscrição: R$ ' . $event->registration_fee }}</p>

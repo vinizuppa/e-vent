@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Auth;
 use League\Flysystem\Util;
 
 use App\Models\Event;
@@ -21,7 +20,7 @@ class EventController extends Controller
     public function index()
     {
         return view('admin.event.index', [
-            'events' => User::find(Auth::user()->id)->events()->paginate(6)
+            'events' => Event::paginate(6)
         ]);
     }
 

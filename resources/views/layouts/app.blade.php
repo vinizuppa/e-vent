@@ -1,6 +1,6 @@
 <x-base-layout>
     <x-navbar />
-    <div class="container-fluid mt-4">
+    <div class="container-fluid mt-3">
         <div class="row">
             <nav class="col-md-3 col-xl-2 mb-2">
                 <x-sidebar />

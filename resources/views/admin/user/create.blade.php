@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-slot name="title">Novo Usuário</x-slot>
+    <x-slot name="title">Novo usuário organizador</x-slot>
     <form action="{{ route('users.store') }}" method="post" class="row g-3">
         @csrf
         <div class="col-md-6">
