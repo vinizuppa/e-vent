@@ -110,7 +110,7 @@
 
             <div class="mb-3 row my-3">
                 <div class="d-flex justify-content-center">
-                    <a href="#" class="btn btn-danger text-uppercase">continuar</a>
+                    <a href="#" class="btn btn-danger text-uppercase">continuar <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
     </div>
