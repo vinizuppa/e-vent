@@ -16,7 +16,6 @@
                         </h5>
                         <p class="card-text">E-mail: {{ $user->email }}</p>
                         <p class="card-text">Usuário: {{ $user->username }}</p>
-                        <p class="card-text">Telefone: {{ $user->phone }}</p>
                     </div>
                     <div class="card-footer text-end">
                         <p class="card-text text-muted text-end text-uppercase">
