@@ -26,6 +26,7 @@ Route::get('/search', [EventController::class, 'search'])->name('public.events.s
 Route::prefix('/event/{event}')->group(function () {
     Route::get('detail', [EventController::class, 'detail'])->name('public.events.detail');
     Route::get('subscribe', [EventController::class, 'subscribe'])->name('public.events.subscribe')->middleware('auth');
+    Route::get('subscribe2', [EventController::class, 'subscribe2'])->name('public.events.subscribe2')->middleware('auth');
 });
 
 Route::middleware('auth')->group(function () {

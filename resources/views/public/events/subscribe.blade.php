@@ -2,7 +2,7 @@
     <div class="container">
         <div class="card">
             <div class="card-header text-center">
-                <strong>Informações de Cadastro e Evento</strong>
+                <strong>Informações de Participante e Evento</strong>
             </div>
             <div class="row mt-2 justify-content-center">
                 <div class="col-md-8">
@@ -102,7 +102,7 @@
                                     <p class="card-text"><i class="mx-2 bi bi-envelope-fill text-danger"></i><strong class="text-danger">E-mail: </strong> {{ Auth::user()->email }}</p>
                                     <p class="card-text"><i class="mx-2 bi-telephone-fill text-danger"></i><strong class="text-danger">Telefone: </strong>{{ Auth::user()->phone }}</p>
                                     <p class="card-text"><i class="mx-2 text-danger"><i class="fas fa-id-card"></i></i><strong class="text-danger">Documento: </strong>{{ Auth::user()->document_name }}</p>
-                                    <p class="card-text"><i class="mx-2 text-danger"><i class="fas fa-sort-numeric-up"></i></i><strong class="text-danger">Número: </strong>{{ Auth::user()->document_number }}</p>
+                                    <p class="card-text"><i class="mx-2 text-danger"><i class="fas fa-sort-numeric-up"></i></i><strong class="text-danger">Número Documento: </strong>{{ Auth::user()->document_number }}</p>
                             </div>
                         </div>
                     </div>
@@ -110,7 +110,7 @@
 
             <div class="mb-3 row my-3">
                 <div class="d-flex justify-content-center">
-                    <a href="#" class="btn btn-danger text-uppercase">continuar <i class="fas fa-arrow-right"></i></a>
+                    <a href="{{ route('public.events.subscribe2', $event->id) }}" class="btn btn-danger text-uppercase">continuar <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
     </div>
