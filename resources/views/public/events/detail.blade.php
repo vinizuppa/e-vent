@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <div class="container-fluid d-flex justify-content-center flex-wrap mt-2">    
+    <div class="container-fluid d-flex justify-content-center flex-wrap mt-2">
         <img src="{{ count($event->images) > 0 ? Storage::url($event->images[0]->path) : asset('img/event/default.jpg') }}" alt="Banner do evento" class="w-75 img-fluid rounded">
     </div>
     <div class="container-fluid d-flex justify-content-center flex-wrap mt-2">
@@ -20,7 +20,7 @@
         </div>
     </div>
     <div class="container-fluid d-flex justify-content-center flex-wrap mt-2 ">
-        <h2 class="my-3 text-dark">Descição do evento</h2>
+        <h2 class="my-3 text-dark">Descrição do evento</h2>
     </div>
         <hr class="bg-danger border-2 border-top">
 
@@ -47,8 +47,8 @@
                     </div>
                 </div>
             @endforelse
-        <div>        
-        <div class="d-flex justify-content-center">        
+        <div>
+        <div class="d-flex justify-content-center">
             <div class="card border rounded shadow" style="width: 18rem;">
                 <div class="card-body">
                     <h5 class="card-text my-3 text-dark"><i class="mx-2 bi bi-cash-stack text-danger"></i>{{ $event->registration_fee }}</h5>
@@ -56,5 +56,5 @@
                 </div>
             </div>
         </div>
-    </div>              
+    </div>
 </x-guest-layout>
