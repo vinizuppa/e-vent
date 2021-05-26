@@ -49,8 +49,8 @@
                             <div class="row mb-3">
                                 <label for="document_name" class="col-md-4 col-form-label">Documento</label>
                                 <div class="col-md-3">
-                                    <select name="document_name" id="document_name" class="form-select">
-                                        <option selected>Selecione</option>
+                                    <select name="document_name" id="document_name" class="form-select" required>
+                                        <option value="">Selecione</option>
                                         <option value="CPF">CPF</option>
                                         <option value="CNH">CNH</option>
                                         <option value="Passaporte">Passaporte</option>
