@@ -40,6 +40,11 @@ class Event extends Model
         return $this->hasMany(Image::class);
     }
 
+    public function registrations()
+    {
+        return $this->hasMany(Registration::class);
+    }
+
     public function startDate()
     {
         return date('d/m/Y H:i', strtotime($this->start_date));

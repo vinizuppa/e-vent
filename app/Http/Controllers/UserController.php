@@ -16,8 +16,7 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        $adm = $request->query('adm');
-        if ($adm) {
+        if ($request->query('adm')) {
             $users = User::where('group', '!=', 'Participante')->paginate(5);
         } else {
             $users = User::paginate(5);
