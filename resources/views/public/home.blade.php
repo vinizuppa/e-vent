@@ -71,7 +71,7 @@
                             <p class="card-text">Inicio: {{ $event->startDate() }}</p>
                             <p class="card-text">Fim: {{ $event->endDate() }}</p>
                             <p class="card-text">Valor: R$ {{ $event->registration_fee }}</p>
-                            <a href="{{ route('public.events.detail', $event->id) }}" class="btn btn-outline-danger w-100">VER MAIS</a>
+                            <a href="{{ route('public.events.detail', $event) }}" class="btn btn-outline-danger w-100">VER MAIS</a>
                         </div>
                     </div>
                 </div>

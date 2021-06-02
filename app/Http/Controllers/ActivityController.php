@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Models\Activity;
 use App\Models\Event;
 
@@ -13,12 +12,14 @@ class ActivityController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param  \App\Models\Event $event
      * @return \Illuminate\Http\Response
      */
     public function index(Event $event)
     {
+        $activities = $event->activities()->paginate(5);
         return view('admin.activity.index', [
-            'activities' => $event->activities()->paginate(5),
+            'activities' => $activities,
             'event' => $event
         ]);
     }
@@ -26,6 +27,7 @@ class ActivityController extends Controller
     /**
      * Show the form for creating a new resource.
      *
+     * @param  \App\Models\Event $event
      * @return \Illuminate\Http\Response
      */
     public function create(Event $event)
@@ -39,6 +41,7 @@ class ActivityController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Event $event
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request, Event $event)
@@ -99,8 +102,8 @@ class ActivityController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Activity  $activity
+     * @param  \Illuminate\Http\Request $request
+     * @param  \App\Models\Activity $activity
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Activity $activity)
@@ -116,7 +119,6 @@ class ActivityController extends Controller
             'instructions' => 'string',
             'responsible' => 'required|string'
         ]);
-
         $activity->update([
             'name' => $request->name,
             'description' => $request->description,
@@ -128,20 +130,18 @@ class ActivityController extends Controller
             'instructions' => $request->instructions,
             'responsible' => $request->responsible
         ]);
-
         return redirect()->route('events.activities.index', $activity->event);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Activity  $activity
+     * @param  \App\Models\Activity $activity
      * @return \Illuminate\Http\Response
      */
     public function destroy(Activity $activity)
     {
         $activity->delete();
-
         return redirect()->route('events.activities.index', $activity->event);
     }
 }

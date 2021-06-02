@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use League\Flysystem\Util;
-
 use App\Models\Event;
 use App\Models\User;
 
@@ -19,15 +18,16 @@ class EventController extends Controller
      */
     public function index()
     {
+        $events = Event::paginate(6);
         return view('admin.event.index', [
-            'events' => Event::paginate(6)
+            'events' => $events
         ]);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Event  $event
+     * @param  \App\Models\Event $event
      * @return \Illuminate\Http\Response
      */
     public function show(Event $event)
@@ -114,7 +114,6 @@ class EventController extends Controller
             'start_date' => 'required|date|after_or_equal:now',
             'end_date' => 'required|date|after:start_date'
         ]);
-
         $event->update([
             'name' => $request->name,
             'description' => $request->description,
@@ -171,6 +170,8 @@ class EventController extends Controller
 
     /**
      * Show event details - public
+     *
+     * @return \Illuminate\Http\Response
      */
     public function detail(Event $event)
     {

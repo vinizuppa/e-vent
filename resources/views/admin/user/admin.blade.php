@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-slot name="title">Todos os usuários</x-slot>
+    <x-slot name="title">Organizadores</x-slot>
     <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-2">
         @forelse ($users as $user)
             <div class="col">

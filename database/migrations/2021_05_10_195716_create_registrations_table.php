@@ -17,6 +17,7 @@ class CreateRegistrationsTable extends Migration
             $table->id();
             $table->string('status');
             $table->timestamps();
+            $table->softDeletes();
             $table->foreignId('event_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
         });

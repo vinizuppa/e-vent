@@ -32,11 +32,12 @@ Route::prefix('/event/{event}')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::prefix('admin')->group(function () {
         Route::get('/', [AdminController::class, 'index'])->name('admin.home');
+        Route::get('users-admin', [UserController::class, 'admin'])->name('users.admin');
         Route::resource('users', UserController::class);
         Route::resource('events', EventController::class);
         Route::resource('events.activities', ActivityController::class)->shallow();
         Route::resource('events.images', ImageController::class)->shallow();
-        Route::get('/config', [ConfigController::class, 'index'])->name('configs.index');
+        Route::get('config', [ConfigController::class, 'index'])->name('configs.index');
     });
 });
 

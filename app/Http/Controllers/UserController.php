@@ -9,18 +9,28 @@ use App\Models\User;
 
 class UserController extends Controller
 {
+
+    /**
+     * Display a listing of the resource
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function admin()
+    {
+        $users = User::where('group', '!=', 'Participante')->paginate(5);
+        return view('admin.user.admin', [
+            'users' => $users
+        ]);
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        if ($request->query('adm')) {
-            $users = User::where('group', '!=', 'Participante')->paginate(5);
-        } else {
-            $users = User::paginate(5);
-        }
+        $users = User::paginate(5);
         return view('admin.user.index', [
             'users' => $users
         ]);

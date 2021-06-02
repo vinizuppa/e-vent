@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class RegistrationController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -82,4 +83,5 @@ class RegistrationController extends Controller
     {
         //
     }
+
 }

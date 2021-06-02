@@ -7,12 +7,14 @@ use App\Models\Event;
 class HomeController extends Controller
 {
 
+    /**
+     *
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        // Eventos atuais (data não passou)
-        //$events = Event::where('start_date', '>=', date('Y-m-d'))->paginate(6);
-        // Todos os eventos cadastrados
-        $events = Event::paginate(6);
+        $events = Event::where('end_date', '>=', date('Y-m-d'))->orderBy('start_date', 'asc')->paginate(6);
         return view('public.home', [
             'events' => $events
         ]);

@@ -20,7 +20,6 @@ class DatabaseSeeder extends Seeder
             'name' => 'Admin',
             'email' => 'eventfatec@gmail.com',
             'password' => Hash::make('senhaadmin123456'),
-            'username' => 'admin',
             'group' => 'Organizador'
         ]);
         Event::factory()->count(10)->create([
