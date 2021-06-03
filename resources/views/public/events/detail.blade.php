@@ -1,6 +1,6 @@
 <x-guest-layout>
-    <div class="row justify-content-md-center my-2">
-        <div class="col col-md-10">
+    <div class="row justify-content-lg-center my-2">
+        <div class="col col-lg-10">
             <div class="card shadow">
                 <div class="card-body">
                     <div class="row justify-content-md-center">
@@ -44,7 +44,10 @@
                                 R$ {{ $event->registration_fee }}
                             </h5>
                             @if (Auth::user() && Auth::user()->group == 'Participante')
-                                <a href="{{ route('public.events.subscribe', $event) }}" class="btn btn-outline-danger w-100">INSCREVER-SE</a>
+                                <a href="{{ route('public.events.subscribe') }}" class="btn btn-outline-danger w-100">Inscrever-se</a>
+                            @else
+                                <a href="#" class="btn btn-outline-danger w-100 disabled">Inscrever-se</a>
+                                <small class="text-muted">Inscrição disponível apenas para participantes</small>
                             @endif
                         </div>
                     </div>

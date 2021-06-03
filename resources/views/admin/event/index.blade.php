@@ -5,7 +5,7 @@
             <i class="fas fa-plus"></i>
         </a>
     </x-slot>
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-2">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-3">
         @forelse ($events as $event)
             <div class="col">
                 <div class="card shadow">

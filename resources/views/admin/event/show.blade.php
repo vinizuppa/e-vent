@@ -1,14 +1,12 @@
 <x-app-layout>
     <x-slot name="title">Informações evento</x-slot>
-    <div class="row g-2 mb-2">
-        <div class="col-12 col-md-4 mb-2">
-            <div class="card shadow">
-                <img src="{{ count($event->images) > 0 ? Storage::url($event->images[0]->path) : asset('img/event/default.jpg') }}" alt="{{ $event->name }}" class="card-img">
-            </div>
-        </div>
-        <div class="col-12 col-md-8">
-            <div class="card shadow">
-                <div class="card-body">
+    <div class="card shadow mb-2">
+        <div class="card-body">
+            <div class="row">
+                <div class="col col-md-5">
+                    <img src="{{ count($event->images) > 0 ? Storage::url($event->images[0]->path) : asset('img/event/default.jpg') }}" alt="{{ $event->name }}" class="card-img">
+                </div>
+                <div class="col col-md-7">
                     <h4 class="card-title">{{ $event->name }}</h4>
                     <p class="card-text">Descrição: {{ $event->description }}</p>
                     <p class="card-text">Endereço: {{ $event->address }}</p>
@@ -18,39 +16,34 @@
                     <p class="card-text">Fim: {{ $event->endDate() }}</p>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="card shadow mb-2">
-        <div class="card-body">
-            <h5 class="card-title text-center">Atividades</h5>
-        </div>
-    </div>
-    @if (count($event->activities) > 0)
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-2">
-            @foreach ($event->activities as $activity)
+            <hr class="border-2 bg-danger">
+            <div class="row">
                 <div class="col">
-                    <div class="card shadow">
-                        <div class="card-body">
-                            <h4 class="card-title">{{ $activity->name }}</h4>
-                            <p class="card-text">Descrição: {{ $activity->description }}</p>
-                            <p class="card-text">Início: {{ $activity->startDate() }}</p>
-                            <p class="card-text">Fim: {{ $activity->endDate() }}</p>
-                            <p class="card-text">Vagas: {{ $activity->vacancies }}</p>
-                        </div>
-                        <div class="card-footer text-end">
-                            <a href="{{ route('activities.show', $activity) }}" class="btn btn-primary">
-                                <i class="fas fa-info"></i>
-                            </a>
-                        </div>
-                    </div>
+                    <h5 class="card-title text-center">Atividades</h5>
                 </div>
-            @endforeach
-        </div>
-    @else
-        <div class="card shadow">
-            <div class="card-body">
-                <p class="card-text">Nenhuma atividade cadastrada</p>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <ul class="list-group">
+                        @forelse ($event->activities as $activity)
+                            <li href="#" class="list-group-item list-group-item-action">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">{{ $activity->name }}</h5>
+                                    <small class="text-muted">Início: {{ $activity->startDate() }}</small>
+                                </div>
+                                <h5></h5>
+                                <p class="mb-1">Instruções: {{ $activity->instructions }}</p>
+                                <p class="mb-1">Tipo: {{ $activity->type }}</p>
+                                <p class="mb-1">Vagas disponíveis: {{ $activity->vacancies }}</p>
+                            </li>
+                        @empty
+                            <li href="#" class="list-group-item list-group-item-action list-group-item-warning text-center">
+                                Nenhuma atividade cadastrada
+                            </li>
+                        @endforelse
+                    </ul>
+                </div>
             </div>
         </div>
-    @endif
+    </div>
 </x-app-layout>

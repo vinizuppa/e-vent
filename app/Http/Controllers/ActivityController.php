@@ -53,7 +53,7 @@ class ActivityController extends Controller
             'end_date' => 'required|date|after:start_date',
             'type' => 'required|string',
             'place' => 'required|string',
-            'vacancies' => 'string',
+            'vacancies' => 'numeric',
             'instructions' => 'string',
             'responsible' => 'required|string'
         ]);

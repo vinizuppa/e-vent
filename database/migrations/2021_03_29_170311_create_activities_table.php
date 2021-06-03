@@ -21,8 +21,8 @@ class CreateActivitiesTable extends Migration
             $table->dateTime('end_date');
             $table->string('type');
             $table->string('place');
-            $table->integer('vacancies')->nullable();
-            $table->text('instructions')->nullable();
+            $table->integer('vacancies')->nullable()->default(0);
+            $table->text('instructions')->nullable()->default('Sem instruções');
             $table->string('responsible');
             $table->timestamps();
             $table->softDeletes();
