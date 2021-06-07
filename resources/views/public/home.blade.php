@@ -45,10 +45,10 @@
         <!-- Form busca de eventos -->
         <div class="row my-4">
             <div class="d-flex justify-content-center">
-                <form class="col-10 col-md-8 align-items-center shadow" action="{{ route('public.events.search') }}" method="get">
+                <form action="{{ route('public.events.search') }}" method="get" class="col-10 align-items-center shadow">
                     <div class="input-group">
-                        <input type="text" class="form-control form-control-lg" placeholder="Encontre um evento" name="event">
-                        <button class="btn btn-danger" type="submit">
+                        <input type="text" name="event" placeholder="Encontre um evento" class="form-control form-control-lg">
+                        <button class="btn btn-danger btn-lg" type="submit">
                             <i class="bi bi-search text-light"></i>
                         </button>
                     </div>
@@ -57,13 +57,17 @@
         </div>
         <div class="row">
             <div class="col-12">
-                <h1>Próximos eventos</h1>
+                <div class="card shadow">
+                    <div class="card-body">
+                        <h1 class="card-title">Próximos eventos</h1>
+                    </div>
+                </div>
             </div>
         </div>
         <!-- Cards de eventos -->
-        <div class="row row-cols-1 row-cols-md-3 my-4 g-4">
+        <div class="row my-2 g-4">
             @forelse ($events as $event)
-                <div class="col">
+                <div class="col-12 col-md-3">
                     <div class="card shadow">
                         <img src="{{ count($event->images) > 0 ? Storage::url($event->images[0]->path) : asset('img/event/default.jpg') }}" class="card-img-top" alt="{{ $event->name }}">
                         <div class="card-body">
@@ -76,13 +80,14 @@
                     </div>
                 </div>
             @empty
-                <h2>Nenhum evento próximo</h2>
+                <div class="col-12">
+                    <div class="card shadow">
+                        <div class="card-body">
+                            <h2 class="card-title">Nenhum evento próximo</h2>
+                        </div>
+                    </div>
+                </div>
             @endforelse
-        </div>
-        <div class="row my-2">
-            <div class="d-flex justify-content-center">
-                {!! $events->links() !!}
-            </div>
         </div>
     </div>
 </x-guest-layout>

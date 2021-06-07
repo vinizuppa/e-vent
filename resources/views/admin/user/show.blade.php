@@ -1,33 +1,39 @@
 <x-app-layout>
     <x-slot name="title">Informações</x-slot>
-    <div class="row">
-        <div class="col-md-2">            
-            <img src="https://gravatar.com/avatar/{{ md5(trim(strtolower($user->email))) }}?s=150&d=https://ui-avatars.com/api/{{ trim(str_replace(' ', '+', $user->name)) }}/150/dc3545/fff/1" alt="Foto {{$user->name}}" class="rounded-circle mx-auto d-block" />
-        </div>
-        <div class="col-md-10">
-            <form class="g-2">
-                <div class="mb-3 row">
-                    <label for="id" class="col-sm-2 col-form-label">ID</label>
-                    <div class="col-sm-2">
-                        <input type="text" class="form-control" id="id" value="{{ $user->id }}" disabled>
-                    </div>
-                    <label for="user" class="col-sm-2 col-form-label">Usuário</label>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control" id="user" value="{{ $user->username }}" disabled>
+    <div class="card shadow mb-2">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="https://gravatar.com/avatar/{{ md5(trim(strtolower($user->email))) }}?s=180&d=https://ui-avatars.com/api/{{ trim(str_replace(' ', '+', $user->name)) }}/180/dc3545/fff/1" alt="Foto {{$user->name}}" class="rounded-circle mx-auto d-block" />
+                </div>
+                <div class="col-md-8">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h2 class="card-title">{{ $user->name }}</h2>
+                            <p class="card-text">E-mail: {{ $user->email }}</p>
+                            <p class="card-text">Grupo: {{ $user->group }}</p>
+                            <p class="card-text">Telefone: {{ $user->phone }}</p>
+                            @if ($user->group == 'Participante')
+                                <p class="card-text">Documento: {{ $user->document_name }} - {{ $user->document_number }}</p>
+                            @endif
+                        </div>
+                        <div class="col-md-4">
+                            <a href="{{ route('users.edit', $user) }}" class="btn btn-warning w-100 my-2">
+                                <i class="fas fa-pencil-alt"></i>
+                                Editar
+                            </a>
+                            <a href="#" class="btn btn-warning w-100 my-2">
+                                <i class="fas fa-envelope"></i>
+                                Alterar e-mail
+                            </a>
+                            <a href="#" class="btn btn-warning w-100 my-2">
+                                <i class="fas fa-key"></i>
+                                Alterar senha
+                            </a>
+                        </div>
                     </div>
                 </div>
-                <div class="mb-3 row">
-                    <label for="name" class="col-sm-2 col-form-label">Nome</label>
-                    <div class="col-sm-4">
-                        <input type="text" class="form-control" id="name" value="{{ $user->name }}" disabled>
-                    </div>
-                    <label for="email" class="col-sm-2 col-form-label">E-mail</label>
-                    <div class="col-sm-4">
-                        <input type="text" class="form-control" id="email" value="{{ $user->email }}" disabled>
-                    </div>
-                </div>
-            </form>
+            </div>
         </div>
-        
     </div>
 </x-app-layout>

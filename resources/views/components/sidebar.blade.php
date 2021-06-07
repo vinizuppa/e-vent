@@ -10,13 +10,13 @@
             @if (Auth::user()->group == 'Organizador')
                 <li class="nav-item bg-danger rounded">
                     <a class="nav-link text-light" href="{{ route('events.index') }}">
-                    <i class="fas fa-calendar-alt"></i>
+                        <i class="fas fa-calendar-alt"></i>
                         Eventos
                     </a>
                 </li>
                 <li class="nav-item bg-danger rounded">
                     <a class="nav-link text-light" href="#">
-                    <i class="fas fa-list"></i>
+                        <i class="fas fa-list"></i>
                         Relatórios
                     </a>
                 </li>
@@ -24,6 +24,19 @@
                     <a class="nav-link text-light" href="{{ route('configs.index') }}">
                         <i class="fas fa-cog"></i>
                         Configurações
+                    </a>
+                </li>
+            @else
+                <li class="nav-item bg-danger rounded">
+                    <a href="#" class="nav-link text-light">
+                        <i class="fas fa-plus"></i>
+                        Inscrições
+                    </a>
+                </li>
+                <li class="nav-item bg-danger rounded">
+                    <a href="#" class="nav-link text-light">
+                        <i class="fas fa-dollar-sign"></i>
+                        Pagamentos
                     </a>
                 </li>
             @endif

@@ -162,7 +162,7 @@ class EventController extends Controller
         //$events = Event::where('end_date', '<=', date('Y-m-d'))->where('name', 'like', '%' . $request->search . '%')->get();
         $search = $request->query('event');
         $events = Event::where('name', 'like', '%' . $search . '%')->get();
-        return view('public.events.search', [
+        return view('public.event.search', [
             'events' => $events,
             'search' => $search
         ]);
@@ -175,7 +175,7 @@ class EventController extends Controller
      */
     public function detail(Event $event)
     {
-        return view('public.events.detail', [
+        return view('public.event.detail', [
             'event' => $event
         ]);
     }
@@ -185,14 +185,14 @@ class EventController extends Controller
      */
     public function subscribe(Event $event)
     {
-        return view('public.events.subscribe', [
+        return view('public.event.subscribe', [
             'event' => $event
         ]);
     }
 
     public function subscribe2(Event $event)
     {
-        return view('public.events.subscribe2', [
+        return view('public.event.subscribe2', [
             'event' => $event
         ]);
     }

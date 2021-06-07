@@ -5,9 +5,9 @@
             <i class="fas fa-plus"></i>
         </a>
     </x-slot>
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-3">
+    <div class="row g-3">
         @forelse ($events as $event)
-            <div class="col">
+            <div class="col-12 col-sm-6 col-lg-4">
                 <div class="card shadow">
                     <div class="card-body">
                         <h5 class="card-title">
@@ -36,7 +36,13 @@
                 </div>
             </div>
         @empty
-            <p>Sem eventos cadastrados</p>
+            <div class="col-12">
+                <div class="card shadow">
+                    <div class="card-body">
+                        <p class="card-text">Sem eventos cadastrados</p>
+                    </div>
+                </div>
+            </div>
         @endforelse
     </div>
     <div class="d-flex justify-content-center mt-4">

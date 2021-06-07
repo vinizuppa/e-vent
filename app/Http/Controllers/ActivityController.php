@@ -57,7 +57,6 @@ class ActivityController extends Controller
             'instructions' => 'string',
             'responsible' => 'required|string'
         ]);
-
         $event->activities()->create([
             'name' => $request->name,
             'description' => $request->description,
@@ -69,7 +68,6 @@ class ActivityController extends Controller
             'instructions' => $request->instructions,
             'responsible' => $request->responsible
         ]);
-
         return redirect()->route('events.activities.index', $event);
     }
 

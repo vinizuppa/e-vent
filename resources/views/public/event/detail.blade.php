@@ -47,7 +47,7 @@
                                 <a href="{{ route('public.events.subscribe') }}" class="btn btn-outline-danger w-100">Inscrever-se</a>
                             @else
                                 <a href="#" class="btn btn-outline-danger w-100 disabled">Inscrever-se</a>
-                                <small class="text-muted">Inscrição disponível apenas para participantes</small>
+                                <small class="text-muted">Disponível para participantes. <a href="{{ route('register') }}">Cadastre-se</a> ou faça <a href="{{ route('login') }}">login</a>.</small>
                             @endif
                         </div>
                     </div>

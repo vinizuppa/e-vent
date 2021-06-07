@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Registration extends Model
+class Subscription extends Model
 {
     use HasFactory;
 
@@ -15,7 +15,7 @@ class Registration extends Model
 
     public function event()
     {
-        return $this->belongsTo(Registration::class);
+        return $this->belongsTo(Event::class);
     }
 
     public function user()
