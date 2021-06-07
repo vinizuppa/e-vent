@@ -44,7 +44,7 @@
                                 R$ {{ $event->registration_fee }}
                             </h5>
                             @if (Auth::user() && Auth::user()->group == 'Participante')
-                                <a href="{{ route('public.events.subscribe') }}" class="btn btn-outline-danger w-100">Inscrever-se</a>
+                                <a href="{{ route('public.events.subscribe', $event) }}" class="btn btn-outline-danger w-100">Inscrever-se</a>
                             @else
                                 <a href="#" class="btn btn-outline-danger w-100 disabled">Inscrever-se</a>
                                 <small class="text-muted">Disponível para participantes. <a href="{{ route('register') }}">Cadastre-se</a> ou faça <a href="{{ route('login') }}">login</a>.</small>
