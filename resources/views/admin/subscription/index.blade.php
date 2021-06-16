@@ -1,23 +1,51 @@
 <x-app-layout>
-    <x-slot name="title">Inscrições - {{ $event->name }}</x-slot>
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-2">
-        @forelse ($registrations as $registration)
-            <div class="col">
+    <x-slot name="title">Inscrições</x-slot>
+    <div class="row g-3">
+        @forelse ($subscriptions as $subscription)
+            <div class="col-12 col-sm-3 col-lg-4">
                 <div class="card shadow">
                     <div class="card-body">
                         <h5 class="card-title">
-                            <span class="badge bg-danger mr-2">#{{ $registration->id }}</span>
-                            {{ $registration->status }}
+                            <span class="badge bg-danger mr-2">#{{ $subscription->id }}</span>
+                            <span class="badge{{ $subscription->status == 'Pago' ? ' bg-success' : ' bg-warning' }}">{{ $subscription->status }}</span>
                         </h5>
-                        <p class="card-text">Participante: {{ $registration->user->name }}</p>
+                        <p class="card-text">Data: {{ date('d/m/Y H:i', strtotime($subscription->created_at)) }}</p>
+                        <p class="card-text">Participante: {{ $subscription->user->name }}</p>
+                        <p class="card-text">Evento: {{ $subscription->event->name }}</p>
+                        <p class="card-text">Forma de pagamento: ---</p>
+                    </div>
+                    <div class="card-footer text-end">
+                        @if ($subscription->status == 'Aguardando pagamento')
+                            <a href="#" class="btn btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Informações">
+                                <i class="fas fa-info-circle"></i>
+                            </a>
+                            <a href="#" class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" title="Confirmar pagamento">
+                                <i class="fas fa-money-bill-wave"></i>
+                            </a>
+                        @else
+                            <a href="#" class="btn btn-success">
+                                <i class="fas fa-check"></i>
+                                Pago
+                            </a>
+                        @endif
                     </div>
                 </div>
             </div>
         @empty
-            <h5>Nenhuma inscrição</h5>
+            <div class="col-12">
+                <div class="card shadow">
+                    <div class="card-body">
+                        <p class="card-text">Nenhuma inscrição</p>
+                    </div>
+                </div>
+            </div>
         @endforelse
     </div>
-    <div class="d-flex justify-content-center mt-4">
-        {!! $registrations->links() !!}
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-center mt-4">
+                {!! $subscriptions->links() !!}
+            </div>
+        </div>
     </div>
 </x-app-layout>

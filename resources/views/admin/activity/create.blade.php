@@ -7,9 +7,29 @@
             </div>
             <form action="{{ route('events.activities.store', $event) }}" method="post" class="row g-3">
                 @csrf
+                <div class="col-md-6">
+                    <label for="event" class="form-label">Evento</label>
+                    <input
+                        type="text"
+                        value="{{ $event->name }}"
+                        class="form-control disabled">
+                </div>
+                <div class="col-md-6">
+                    <label for="dates" class="form-label">Período</label>
+                    <input
+                        type="text"
+                        value="{{ date('d/m/Y H:m', strtotime($event->start_date)) }} - {{ date('d/m/Y H:m', strtotime($event->end_date)) }}"
+                        class="form-control disabled">
+                </div>
                 <div class="col-md-4">
                     <label for="name" class="form-label">Nome *</label>
-                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autofocus>
+                    <input
+                        type="text"
+                        name="name"
+                        value="{{ old('name') }}"
+                        class="form-control @error('name') is-invalid @enderror"
+                        required
+                        autofocus>
                     @error('name')
                         <div class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -18,7 +38,13 @@
                 </div>
                 <div class="col-md-8">
                     <label for="description" class="form-label">Descrição *</label>
-                    <textarea id="description" class="form-control @error('description') is-invalid @enderror" name="description" rows="2" required>{{ old('description') }}</textarea>
+                    <textarea
+                        name="description"
+                        class="form-control @error('description') is-invalid @enderror"
+                        rows="2"
+                        required>
+                        {{ old('description') }}
+                    </textarea>
                     @error('description')
                         <div class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -27,7 +53,12 @@
                 </div>
                 <div class="col-md-4">
                     <label for="type" class="form-label">Tipo Atividade *</label>
-                    <input id="type" type="text" class="form-control @error('type') is-invalid @enderror" name="type" value="{{ old('type') }}" required>
+                    <input
+                        type="text"
+                        class="form-control @error('type') is-invalid @enderror"
+                        name="type"
+                        value="{{ old('type') }}"
+                        required>
                     @error('type')
                         <div class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -36,7 +67,11 @@
                 </div>
                 <div class="col-md-4">
                     <label for="vacancies" class="form-label">Vagas</label>
-                    <input id="vacancies" type="number" class="form-control @error('vacancies') is-invalid @enderror" name="vacancies" value="{{ old('vacancies') ?? '0' }}">
+                    <input
+                        type="number"
+                        class="form-control @error('vacancies') is-invalid @enderror"
+                        name="vacancies"
+                        value="{{ old('vacancies') ?? '0' }}">
                     @error('vacancies')
                         <div class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -45,7 +80,12 @@
                 </div>
                 <div class="col-md-4">
                     <label for="responsible" class="form-label">Responsável *</label>
-                    <input id="responsible" type="text" class="form-control @error('responsible') is-invalid @enderror" name="responsible" value="{{ old('responsible') }}" required>
+                    <input
+                        type="text"
+                        class="form-control @error('responsible') is-invalid @enderror"
+                        name="responsible"
+                        value="{{ old('responsible') }}"
+                        required>
                     @error('responsible')
                         <div class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -54,7 +94,12 @@
                 </div>
                 <div class="col-md-4">
                     <label for="place" class="form-label">Local *</label>
-                    <input id="place" type="text" class="form-control @error('place') is-invalid @enderror" name="place" value="{{ old('place') }}" required>
+                    <input
+                        type="text"
+                        class="form-control @error('place') is-invalid @enderror"
+                        name="place"
+                        value="{{ old('place') }}"
+                        required>
                     @error('place')
                         <div class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -63,7 +108,15 @@
                 </div>
                 <div class="col-md-4">
                     <label for="start_date" class="form-label">Data/hora inicial *</label>
-                    <input id="start_date" type="datetime-local" class="form-control @error('start_date') is-invalid @enderror" name="start_date" value="{{ old('start_date') }}" required>
+                    <input
+                        type="datetime-local"
+                        name="start_date"
+                        class="form-control @error('start_date') is-invalid @enderror"
+                        value="{{ old('start_date') }}"
+                        min="{{ date('Y-m-d\TH:i:s', strtotime($event->start_date)) }}"
+                        max="{{ date('Y-m-d\TH:i:s', strtotime($event->end_date)) }}"
+                        step="any"
+                        required>
                     @error('start_date')
                         <div class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -72,7 +125,15 @@
                 </div>
                 <div class="col-md-4">
                     <label for="end_date" class="form-label">Data/hora final *</label>
-                    <input id="end_date" type="datetime-local" class="form-control @error('end_date') is-invalid @enderror" name="end_date" value="{{ old('end_date') }}" required>
+                    <input
+                        type="datetime-local"
+                        name="end_date"
+                        class="form-control @error('end_date') is-invalid @enderror"
+                        value="{{ old('end_date') }}"
+                        min="{{ date('Y-m-d\TH:i:s', strtotime($event->start_date)) }}"
+                        max="{{ date('Y-m-d\TH:i:s', strtotime($event->end_date)) }}"
+                        step="any"
+                        required>
                     @error('end_date')
                         <div class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -81,7 +142,12 @@
                 </div>
                 <div class="col-md-12">
                     <label for="instructions" class="form-label">Instruções</label>
-                    <textarea id="instructions" class="form-control @error('instructions') is-invalid @enderror" name="instructions" rows="2">{{ old('instructions') }}</textarea>
+                    <textarea
+                        class="form-control @error('instructions') is-invalid @enderror"
+                        name="instructions"
+                        rows="2">
+                        {{ old('instructions') }}
+                    </textarea>
                     @error('instructions')
                         <div class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>

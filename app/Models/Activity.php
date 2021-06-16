@@ -27,6 +27,11 @@ class Activity extends Model
         'responsible'
     ];
 
+    protected $dates = [
+        'start_date',
+        'end_date'
+    ];
+
     public function event()
     {
         return $this->belongsTo(Event::class);

@@ -1,5 +1,20 @@
 <x-app-layout>
-    <x-slot name="title">Todos os usuários</x-slot>
+    <x-slot name="title">Usuários {{ $group == 'participante' ? 'participantes' : ($group == 'organizador' ? 'organizadores' : '') }}</x-slot>
+    <x-slot name="cardHeader">
+        <div class="row">
+            <div class="col">
+                <a href="{{ route('users.index') }}" class="btn btn-primary">Todos</a>
+                <a href="{{ route('users.index', ['group' => 'participante']) }}" class="btn btn-success">
+                    <i class="fas fa-user"></i>
+                    Participantes
+                </a>
+                <a href="{{ route('users.index', ['group' => 'organizador']) }}" class="btn btn-warning">
+                    <i class="fas fa-user-tie"></i>
+                    Organizadores
+                </a>
+            </div>
+        </div>
+    </x-slot>
     <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-2">
         @forelse ($users as $user)
             <div class="col">

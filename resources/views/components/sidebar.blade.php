@@ -1,12 +1,6 @@
 <div class="card shadow">
     <div class="card-body">
         <ul class="nav row g-2">
-            <li class="nav-item bg-danger rounded">
-                <a class="nav-link text-light" href="{{ route('admin.home') }}">
-                    <i class="fas fa-home"></i>
-                    Painel
-                </a>
-            </li>
             @if (Auth::user()->group == 'Organizador')
                 <li class="nav-item bg-danger rounded">
                     <a class="nav-link text-light" href="{{ route('events.index') }}">
@@ -16,12 +10,17 @@
                 </li>
                 <li class="nav-item bg-danger rounded">
                     <a class="nav-link text-light" href="#">
-                        <i class="fas fa-list"></i>
-                        Relatórios
+                        Atividades
                     </a>
                 </li>
                 <li class="nav-item bg-danger rounded">
-                    <a class="nav-link text-light" href="{{ route('configs.index') }}">
+                    <a class="nav-link text-light" href="{{ route('admin.subscriptions') }}">
+                        <i class="fas fa-list"></i>
+                        Inscrições
+                    </a>
+                </li>
+                <li class="nav-item bg-danger rounded">
+                    <a class="nav-link text-light" href="{{ route('admin.configs') }}">
                         <i class="fas fa-cog"></i>
                         Configurações
                     </a>

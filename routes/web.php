@@ -9,6 +9,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\ConfigController;
+use App\Http\Controllers\SubscriptionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,19 +26,20 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/search', [EventController::class, 'search'])->name('public.events.search');
 Route::prefix('/event/{event}')->group(function () {
     Route::get('detail', [EventController::class, 'detail'])->name('public.events.detail');
-    Route::get('subscribe', [EventController::class, 'subscribe'])->name('public.events.subscribe')->middleware('auth');
-    Route::get('subscribe2', [EventController::class, 'subscribe2'])->name('public.events.subscribe2')->middleware('auth');
+    Route::middleware('auth')->group(function() {
+        Route::resource('subscribe', SubscriptionController::class)->only(['create', 'store']);
+    });
 });
 
 Route::middleware('auth')->group(function () {
     Route::prefix('admin')->group(function () {
         Route::get('/', [AdminController::class, 'index'])->name('admin.home');
-        Route::get('users-admin', [UserController::class, 'admin'])->name('users.admin');
+        Route::get('config', [AdminController::class, 'configs'])->name('admin.configs');
+        Route::get('subscriptions', [AdminController::class, 'subscriptions'])->name('admin.subscriptions');
         Route::resource('users', UserController::class);
         Route::resource('events', EventController::class);
         Route::resource('events.activities', ActivityController::class)->shallow();
-        Route::resource('events.images', ImageController::class)->shallow();
-        Route::get('config', [ConfigController::class, 'index'])->name('configs.index');
+        Route::resource('events.subscriptions', SubscriptionController::class)->only(['index', 'show'])->shallow();
     });
 });
 

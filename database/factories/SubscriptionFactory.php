@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\Registration;
+use App\Models\Subscription;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class RegistrationFactory extends Factory
+class SubscriptionFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Registration::class;
+    protected $model = Subscription::class;
 
     /**
      * Define the model's default state.

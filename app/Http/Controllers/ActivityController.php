@@ -49,12 +49,12 @@ class ActivityController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'required|string',
-            'start_date' => 'required|date|after_or_equal:now',
-            'end_date' => 'required|date|after:start_date',
+            'start_date' => 'required|date|after_or_equal:' . $event->start_date,
+            'end_date' => 'required|date|after:start_date|before:' . $event->end_date,
             'type' => 'required|string',
             'place' => 'required|string',
-            'vacancies' => 'numeric',
-            'instructions' => 'string',
+            'vacancies' => 'nullable|numeric',
+            'instructions' => 'nullable|string',
             'responsible' => 'required|string'
         ]);
         $event->activities()->create([
@@ -77,9 +77,10 @@ class ActivityController extends Controller
      * @param  \App\Models\Activity  $activity
      * @return \Illuminate\Http\Response
      */
-    public function show(Activity $activity)
+    public function show(Event $event, Activity $activity)
     {
         return view('admin.activity.show', [
+            'event' => $event,
             'activity' => $activity
         ]);
     }
@@ -90,9 +91,10 @@ class ActivityController extends Controller
      * @param  \App\Models\Activity  $activity
      * @return \Illuminate\Http\Response
      */
-    public function edit(Activity $activity)
+    public function edit(Event $event, Activity $activity)
     {
         return view('admin.activity.edit', [
+            'event' => $event,
             'activity' => $activity
         ]);
     }

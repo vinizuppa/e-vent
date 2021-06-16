@@ -67,13 +67,13 @@
         <!-- Cards de eventos -->
         <div class="row my-2 g-4">
             @forelse ($events as $event)
-                <div class="col-12 col-md-3">
+                <div class="col-12 col-md-4">
                     <div class="card shadow">
                         <img src="{{ count($event->images) > 0 ? Storage::url($event->images[0]->path) : asset('img/event/default.jpg') }}" class="card-img-top" alt="{{ $event->name }}">
                         <div class="card-body">
                             <h5 class="card-title">{{ $event->name }}</h5>
-                            <p class="card-text">Inicio: {{ $event->startDate() }}</p>
-                            <p class="card-text">Fim: {{ $event->endDate() }}</p>
+                            <p class="card-text">Período: {{ $event->start_date->formatLocalized('%a, %B') }} - {{ $event->endDate() }}</p>
+                            <p class="card-text">Atividades: {{ count($event->activities) }}</p>
                             <p class="card-text">Valor: R$ {{ $event->registration_fee }}</p>
                             <a href="{{ route('public.events.detail', $event) }}" class="btn btn-outline-danger w-100">VER MAIS</a>
                         </div>

@@ -11,7 +11,7 @@
                         <div class="col-md-8">
                             <h2 class="card-title">{{ $user->name }}</h2>
                             <p class="card-text">E-mail: {{ $user->email }}</p>
-                            <p class="card-text">Grupo: {{ $user->group }}</p>
+                            <p class="card-text">Tipo: {{ $user->group }}</p>
                             <p class="card-text">Telefone: {{ $user->phone }}</p>
                             @if ($user->group == 'Participante')
                                 <p class="card-text">Documento: {{ $user->document_name }} - {{ $user->document_number }}</p>

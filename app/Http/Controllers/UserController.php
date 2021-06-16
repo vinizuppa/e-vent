@@ -11,28 +11,24 @@ class UserController extends Controller
 {
 
     /**
-     * Display a listing of the resource
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function admin()
-    {
-        $users = User::where('group', '!=', 'Participante')->paginate(5);
-        return view('admin.user.admin', [
-            'users' => $users
-        ]);
-    }
-
-    /**
      * Display a listing of the resource.
      *
+     * @param Request $request
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $users = User::paginate(5);
+        $group = $request->query('group');
+        if ($group == 'participante') {
+            $users = User::where('group', 'Participante')->paginate(6);
+        } elseif ($group == 'organizador') {
+            $users = User::where('group', 'Organizador')->paginate(6);
+        } else {
+            $users = User::paginate(6);
+        }
         return view('admin.user.index', [
-            'users' => $users
+            'users' => $users,
+            'group' => $group
         ]);
     }
 

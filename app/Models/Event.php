@@ -25,6 +25,11 @@ class Event extends Model
         'end_date'
     ];
 
+    protected $dates = [
+        'start_date',
+        'end_date'
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -40,9 +45,9 @@ class Event extends Model
         return $this->hasMany(Image::class);
     }
 
-    public function registrations()
+    public function subscriptions()
     {
-        return $this->hasMany(Registration::class);
+        return $this->hasMany(Subscription::class);
     }
 
     public function startDate()
