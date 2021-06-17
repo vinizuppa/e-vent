@@ -29,9 +29,10 @@ function id(el) {
 }
 
 window.onload = function () {
-  id('phone').onkeypress = function () {
-    mascara(this, mtel);
-  };
+  var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl);
+  });
 };
 /******/ })()
 ;
