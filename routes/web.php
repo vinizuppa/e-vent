@@ -27,7 +27,8 @@ Route::get('/search', [EventController::class, 'search'])->name('public.events.s
 Route::prefix('/event/{event}')->group(function () {
     Route::get('detail', [EventController::class, 'detail'])->name('public.events.detail');
     Route::middleware('auth')->group(function() {
-        Route::resource('subscribe', SubscriptionController::class)->only(['create', 'store']);
+        Route::get('subscribe', [SubscriptionController::class, 'create'])->name('public.subscription.create');
+        Route::post('subscribe', [SubscriptionController::class, 'store'])->name('public.subscription.store');
     });
 });
 

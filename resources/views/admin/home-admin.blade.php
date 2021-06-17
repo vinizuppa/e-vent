@@ -2,8 +2,13 @@
     <x-slot name="title">Bem-vindo, {{ $user->name }}!</x-slot>
     <div class="card shadow mb-2">
         <div class="card-body">
-            <h2 class="card-title">Informações</h2>
-            <div class="row m-2">
+            <div class="row m-2 g-2">
+                <div class="col-12 col-md-6">
+                    <div id="eventsChart" class="card"></div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div id="subsChart" class="card"></div>
+                </div>
                 <div class="col-12 col-md-3">
                     <a href="{{ route('events.index') }}" class="btn btn-outline-danger p-3 w-100">
                         <h5>{{ $events }} eventos</h5>

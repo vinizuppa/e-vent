@@ -8,7 +8,7 @@
                     <a href="#" class="list-group-item list-group-item-action list-group-item-{{ $subscription->status == 'Pago' ? 'success' : 'warning' }}">
                         <div class="d-flex w-100 justify-content-between">
                             <h4 class="mb-1">{{ $subscription->event->name }}</h4>
-                            <small>Inscrito em {{ date('d/m/Y H:i', strtotime($subscription->created_at)) }}</small>
+                            <small>Inscrito {{ $subscription->created_at->diffForHumans() }}</small>
                         </div>
                         <p class="mb-1">Situação: {{ $subscription->status }}</p>
                     </a>

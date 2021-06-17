@@ -31,11 +31,11 @@
                         <div class="col">
                             <h5 class="card-text">
                                 <i class="bi bi-calendar2-check text-danger"></i>
-                                {{ $event->startDate() }}
+                                {{ $event->start_date->isoFormat('L') }}
                             </h5>
                             <h5 class="card-text">
                                 <i class="bi bi-calendar2-x text-danger"></i>
-                                {{ $event->endDate() }}
+                                {{ $event->end_date->isoFormat('L') }}
                             </h5>
                         </div>
                         <div class="col">
@@ -44,7 +44,7 @@
                                 R$ {{ $event->registration_fee }}
                             </h5>
                             @if (Auth::user() && Auth::user()->group == 'Participante')
-                                <a href="{{ route('public.events.subscribe', $event) }}" class="btn btn-outline-danger w-100">Inscrever-se</a>
+                                <a href="{{ route('public.subscription.create', $event) }}" class="btn btn-outline-danger w-100">Inscrever-se</a>
                             @else
                                 <a href="#" class="btn btn-outline-danger w-100 disabled">Inscrever-se</a>
                                 <small class="text-muted">Disponível para participantes. <a href="{{ route('register') }}">Cadastre-se</a> ou faça <a href="{{ route('login') }}">login</a>.</small>

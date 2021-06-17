@@ -1,117 +1,47 @@
 <x-guest-layout>
     <div class="container">
-        <div class="card">
-            <div class="card-header text-center">
-                <strong>Informações de Participante e Evento</strong>
-            </div>
-            <div class="row mt-2 justify-content-center">
-                <div class="col-md-8">
-                    <div class="position-relative m-4">
-                        <div class="progress" style="height: 1px;">
-                            <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+        <div class="card shadow mb-2 p-4 text-center">
+            <div class="row">
+                <div class="col-6">
+                    <img src="{{ count($event->images) > 0 ? Storage::url($event->images[0]->path) : asset('img/event/default.jpg') }}" alt="{{ $event->name }}" class="rounded mb-2 w-100 mx-auto d-block">
+                    <h3 class="card-title">{{ $event->name }}</h3>
+                    <p class="card-text">Endereço: {{ $event->address }}</p>
+                    <p class="card-text">Período: {{ $event->startDate() }} - {{ $event->endDate() }}</p>
+                    <p class="card-text">Valor inscrição: R${{ $event->registration_fee }}</p>
+                </div>
+                <div class="col-6">
+                    <div class="row mb-2">
+                        <div class="col-6">
+                            <img src="https://gravatar.com/avatar/{{ md5(trim(strtolower($user->email))) }}?s=180&d=https://ui-avatars.com/api/{{ trim(str_replace(' ', '+', $user->name)) }}/180/dc3545/fff/1" alt="{{ $user->name }}" class="rounded-circle mx-auto d-block">
                         </div>
-                        <button type="button" class="position-absolute top-0 start-0 translate-middle btn btn-sm btn-primary rounded-pill" style="width: 2rem; height:2rem;">1</button>
-                        <a href="{{ route('public.events.subscribe2', $event->id) }}"><button type="button" class="position-absolute top-0 start-50 translate-middle btn btn-sm btn-secondary rounded-pill" style="width: 2rem; height:2rem;">2</button></a>
-                        <button type="button" class="position-absolute top-0 start-100 translate-middle btn btn-sm btn-secondary rounded-pill" style="width: 2rem; height:2rem;">3</button>
+                        <div class="col-6">
+                            <h3 class="card-title">{{ $user->name }}</h3>
+                            <p class="card-text">E-mail: {{ $user->email }}</p>
+                            <p class="card-text">Telefone: {{ $user->phone }}</p>
+                            <p class="card-text">Documento: {{ $user->document_name }} - {{ $user->document_number }}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <h3 class="card-title">Forma de pagamento</h3>
+                        <form action="#" method="post" enctype="multipart/form-data">
+                            @csrf
+                            <div class="mb-3 row px-3 pt-2">
+                                <div class="btn-group" role="group">
+                                    <input type="radio" class="btn-check btn-danger" name="btnradio" id="pix" value ="pix" autocomplete="off" required>
+                                    <label class="btn btn-outline-danger" for="pix"><i class="fi-xnsuxl-pix"></i>Pix</label>
+                                    <input type="radio" class="btn-check btn-danger" name="btnradio" id="manual" value ="manual" autocomplete="off" required>
+                                    <label class="btn btn-outline-danger" for="manual"><i class="bi bi-cash"></i> Manual</label>
+                                </div>
+                                <input type="hidden" name="event" value="{{ $event }}">
+                                <input type="hidden" name="user" value="{{ $user }}">
+                            </div>
+                        </form>
+                        <button type="button" class="btn btn-danger text-uppercase" data-bs-toggle="modal" data-bs-target="#modalInserir" data-event="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Desativar">
+                            Confirmar inscrição <i class="fas fa-arrow-right"></i>
+                        </button>
                     </div>
                 </div>
-                <!--
-                <form class="g-2 ms-3 me-3">
-                    <div class="mb-3 row">
-                        <label for="name" class="col-sm-2 col-form-label">Nome</label>
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control" value="{{ Auth::user()->name  }}" disabled>
-                        </div>
-                    </div>
-                    <div class="mb-3 row">
-                    <label for="email" class="col-sm-2 col-form-label">E-mail</label>
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control" id="email" value="{{ Auth::user()->email }}" disabled>
-                        </div>
-                    </div>
-
-                    <div class="mb-3 row">
-                        <label for="username" class="col-sm-2 col-form-label">Usuário</label>
-                        <div class="col-sm-4">
-                            <input type="text" class="form-control" value="{{ Auth::user()->username  }}" disabled>
-                        </div>
-                    </div>
-
-                    <div class="mb-3 row">
-                        <label for="phone" class="col-sm-2 col-form-label">Telefone</label>
-                        <div class="col-sm-4">
-                            <input type="text" class="form-control" id="phone" value="{{ Auth::user()->phone }}" disabled>
-                        </div>
-                    </div>
-
-                    <div class="mb-3 row">
-                    <label for="document_name" class="col-sm-2 col-form-label">Documento</label>
-                        <div class="col-sm-2">
-                            <input type="text" class="form-control" id="document_name" value="{{ Auth::user()->document_name }}" disabled>
-                        </div>
-
-                    <label for="document_number" class="col-sm-1 col-form-label">Nº</label>
-                        <div class="col-sm-4">
-                            <input type="text" class="form-control" id="document_number" value="{{ Auth::user()->document_number }}" disabled>
-                        </div>
-                    </div>
-                         -->
-                         <!--
-                    <div class="mb-3 row">
-                        <label for="document_number" class="col-sm-5 col-form-label">Forma de Pagamento</label>
-                        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                            <input type="radio" class="btn-check btn-danger" name="btnradio" id="pix" autocomplete="off" required>
-                            <label class="btn btn-outline-danger" for="pix"><i class="fi-xnsuxl-pix"></i>Pix</label>
-
-                            <input type="radio" class="btn-check btn-danger" name="btnradio" id="cartao" autocomplete="off" required>
-                            <label class="btn btn-outline-danger" for="cartao"><i class="bi bi-credit-card-2-back-fill"></i> Cartão</label>
-
-                            <input type="radio" class="btn-check btn-danger" name="btnradio" id="manual" autocomplete="off" required>
-                            <label class="btn btn-outline-danger" for="manual"><i class="bi bi-cash"></i> Manual</label>
-                        </div>
-
-                        <div class="d-flex justify-content-end mt-3">
-                            <a href="#" class="btn btn-danger text-uppercase">continuar</a>
-                        </div>
-                    </div>
-                </form>
-                -->
             </div>
-                <div class="row mt-2 px-3 g-2">
-                    <div class="col-md-6">
-                        <div class="card shadow">
-                            <div class="card-header text-center">
-                                <strong>Informações do Evento</strong>
-                            </div>
-                            <div class="card-body">
-                                <p class="card-text"><i class="mx-2 bi bi-bookmark-star-fill text-danger"></i><strong class="text-danger">Nome do Evento: </strong>{{ $event->name }}</p>
-                                <p class="card-text"><i class="mx-2 bi bi-geo-alt-fill text-danger"></i><strong class="text-danger">Endereço: </strong> {{ $event->address }}</p>
-                                <p class="card-text"><i class="mx-2 bi bi-calendar2-check-fill text-danger"></i><strong class="text-danger">Inicio: </strong>{{ $event->startDate() }}</p>
-                                <p class="card-text"><i class="mx-2 bi bi-calendar2-x-fill text-danger"></i><strong class="text-danger">Fim: </strong>{{ $event->endDate()  }}</p>
-                                <p class="card-text"><i class="mx-2 text-danger"><i class="fas fa-money-bill-wave"></i></i><strong class="text-danger">Valor inscrição: </strong>{{ $event->registration_fee }}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="card shadow">
-                            <div class="card-header text-center">
-                                <strong>Informações do Participante</strong>
-                            </div>
-                            <div class="card-body">
-                                    <p class="card-text"><i class="mx-2 bi bi bi-person-circle text-danger"></i><strong class="text-danger">Nome do Participante: </strong>{{ Auth::user()->name  }}</p>
-                                    <p class="card-text"><i class="mx-2 bi bi-envelope-fill text-danger"></i><strong class="text-danger">E-mail: </strong> {{ Auth::user()->email }}</p>
-                                    <p class="card-text"><i class="mx-2 bi-telephone-fill text-danger"></i><strong class="text-danger">Telefone: </strong>{{ Auth::user()->phone }}</p>
-                                    <p class="card-text"><i class="mx-2 text-danger"><i class="fas fa-id-card"></i></i><strong class="text-danger">Documento: </strong>{{ Auth::user()->document_name }}</p>
-                                    <p class="card-text"><i class="mx-2 text-danger"><i class="fas fa-sort-numeric-up"></i></i><strong class="text-danger">Número Documento: </strong>{{ Auth::user()->document_number }}</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            <div class="mb-3 row my-3">
-                <div class="d-flex justify-content-center">
-                    <a href="{{ route('public.events.subscribe2', $event->id) }}" class="btn btn-danger text-uppercase">continuar <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
+        </div>
     </div>
 </x-guest-layout>

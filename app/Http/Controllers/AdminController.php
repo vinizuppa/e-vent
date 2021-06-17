@@ -27,12 +27,22 @@ class AdminController extends Controller
                     ->paginate(6)
             ]);
         } else {
+            $user = User::find(Auth::user()->id);
+            $participants = User::where('group', 'Participante')->count();
+            $events = Event::count();
+            $activities = Activity::count();
+            $subscriptions = Subscription::count();
+            $subsChart = [
+                ['Aguardando pagamento', Subscription::where('status', 'Aguardando pagamento')->count()],
+                ['Pago', Subscription::where('status', 'Pago')->count()]
+            ];
             return view('admin.home-admin', [
-                'user' => User::find(Auth::user()->id),
-                'participants' => User::where('group', 'Participante')->count(),
-                'events' => Event::count(),
-                'activities' => Activity::count(),
-                'subscriptions' => Subscription::count()
+                'user' => $user,
+                'participants' => $participants,
+                'events' => $events,
+                'activities' => $activities,
+                'subscriptions' => $subscriptions,
+                'subsChart' => $subsChart
             ]);
         }
     }

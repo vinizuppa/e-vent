@@ -50,18 +50,4 @@ class Event extends Model
         return $this->hasMany(Subscription::class);
     }
 
-    public function startDate()
-    {
-        return date('d/m/Y H:i', strtotime($this->start_date));
-    }
-
-    public function endDate()
-    {
-        return date('d/m/Y H:i', strtotime($this->end_date));
-    }
-
-    public function eventDuration()
-    {
-        return date_diff(date_create($this->start_date), date_create($this->end_date))->format('%d dias');
-    }
 }

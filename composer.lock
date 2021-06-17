@@ -923,6 +923,7 @@
         },
         {
             "name": "laravel/framework",
+<<<<<<< HEAD
             "version": "v8.46.0",
             "source": {
                 "type": "git",
@@ -933,6 +934,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/laravel/framework/zipball/a18266c612e0e6aba5e0174b3c873d2d217dccfb",
                 "reference": "a18266c612e0e6aba5e0174b3c873d2d217dccfb",
+=======
+            "version": "v8.45.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/framework.git",
+                "reference": "dc2f0bb02c3eb4b27669d626bb3e810db8e7749d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/dc2f0bb02c3eb4b27669d626bb3e810db8e7749d",
+                "reference": "dc2f0bb02c3eb4b27669d626bb3e810db8e7749d",
+>>>>>>> 5ff71d9c36ec63cd66f2bad407a0d5ca5fe24b34
                 "shasum": ""
             },
             "require": {
@@ -1087,7 +1100,11 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
+<<<<<<< HEAD
             "time": "2021-06-08T13:36:46+00:00"
+=======
+            "time": "2021-06-03T16:39:17+00:00"
+>>>>>>> 5ff71d9c36ec63cd66f2bad407a0d5ca5fe24b34
         },
         {
             "name": "laravel/tinker",
@@ -5342,6 +5359,7 @@
         },
         {
             "name": "laravel/breeze",
+<<<<<<< HEAD
             "version": "v1.3.0",
             "source": {
                 "type": "git",
@@ -5352,6 +5370,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/laravel/breeze/zipball/31083193c2050a970bfd38378a93ecf166b5c985",
                 "reference": "31083193c2050a970bfd38378a93ecf166b5c985",
+=======
+            "version": "v1.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/breeze.git",
+                "reference": "35bde0b8c49d4168545d9c4b8b28832ededc5bfb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/breeze/zipball/35bde0b8c49d4168545d9c4b8b28832ededc5bfb",
+                "reference": "35bde0b8c49d4168545d9c4b8b28832ededc5bfb",
+>>>>>>> 5ff71d9c36ec63cd66f2bad407a0d5ca5fe24b34
                 "shasum": ""
             },
             "require": {
@@ -5395,7 +5425,11 @@
                 "issues": "https://github.com/laravel/breeze/issues",
                 "source": "https://github.com/laravel/breeze"
             },
+<<<<<<< HEAD
             "time": "2021-06-08T20:27:33+00:00"
+=======
+            "time": "2021-06-01T15:02:26+00:00"
+>>>>>>> 5ff71d9c36ec63cd66f2bad407a0d5ca5fe24b34
         },
         {
             "name": "laravel/sail",

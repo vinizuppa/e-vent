@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+
 use App\Models\Event;
 use App\Models\Subscription;
-use Illuminate\Http\Request;
+use App\Models\User;
 
 class SubscriptionController extends Controller
 {
@@ -31,7 +33,8 @@ class SubscriptionController extends Controller
     public function create(Event $event)
     {
         return view('public.event.subscribe', [
-            'event' => $event
+            'event' => $event,
+            'user' => User::find(auth()->user()->id)
         ]);
     }
 

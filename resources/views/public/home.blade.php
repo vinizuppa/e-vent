@@ -72,10 +72,10 @@
                         <img src="{{ count($event->images) > 0 ? Storage::url($event->images[0]->path) : asset('img/event/default.jpg') }}" class="card-img-top" alt="{{ $event->name }}">
                         <div class="card-body">
                             <h5 class="card-title">{{ $event->name }}</h5>
-                            <p class="card-text">Período: {{ $event->start_date->formatLocalized('%a, %B') }} - {{ $event->endDate() }}</p>
+                            <p class="card-text">Período: {{ $event->start_date->isoFormat('L') }} - {{ $event->end_date->isoFormat('L') }}</p>
                             <p class="card-text">Atividades: {{ count($event->activities) }}</p>
                             <p class="card-text">Valor: R$ {{ $event->registration_fee }}</p>
-                            <a href="{{ route('public.events.detail', $event) }}" class="btn btn-outline-danger w-100">VER MAIS</a>
+                            <a href="{{ route('public.events.detail', $event) }}" class="btn btn-outline-danger w-100 text-uppercase">Ver mais</a>
                         </div>
                     </div>
                 </div>
