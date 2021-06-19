@@ -29,6 +29,7 @@ class AdminController extends Controller
         } else {
             $user = User::find(Auth::user()->id);
             $participants = User::where('group', 'Participante')->count();
+            $organizers = User::where('group', 'Organizador')->count();
             $events = Event::count();
             $activities = Activity::count();
             $subscriptions = Subscription::count();
@@ -39,6 +40,7 @@ class AdminController extends Controller
             return view('admin.home-admin', [
                 'user' => $user,
                 'participants' => $participants,
+                'organizers' => $organizers,
                 'events' => $events,
                 'activities' => $activities,
                 'subscriptions' => $subscriptions,
@@ -62,10 +64,22 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function subscriptions ()
+    public function subscriptions()
     {
         return view('admin.subscriptions', [
-            'events' => Event::orderBy('start_date')->paginate(6)
+            'events' => Event::orderBy('end_date', 'desc')->orderBy('start_date')->paginate(6)
+        ]);
+    }
+
+    /**
+     * Display activities menu
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function activities()
+    {
+        return view('admin.activities', [
+            'events' => Event::orderBy('end_date', 'desc')->orderBy('start_date')->paginate(6)
         ]);
     }
 

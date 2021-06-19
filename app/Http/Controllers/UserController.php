@@ -19,9 +19,11 @@ class UserController extends Controller
     public function index(Request $request)
     {
         $group = $request->query('group');
-        if ($group == 'participante') {
+        if ($group == 'participant') {
+            $group = 'Participantes';
             $users = User::where('group', 'Participante')->paginate(6);
-        } elseif ($group == 'organizador') {
+        } elseif ($group == 'organizer') {
+            $group = 'Organizadores';
             $users = User::where('group', 'Organizador')->paginate(6);
         } else {
             $users = User::paginate(6);
@@ -66,14 +68,12 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|confirmed|min:8',
-            'username' => 'nullable|string|max:255|unique:users'
+            'password' => 'required|string|confirmed|min:8'
         ]);
         User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'username' => $request->username,
             'phone' => $request->phone,
             'group' => 'Organizador'
         ]);

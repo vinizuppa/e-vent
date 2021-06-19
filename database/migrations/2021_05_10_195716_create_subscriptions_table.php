@@ -16,6 +16,7 @@ class CreateSubscriptionsTable extends Migration
         Schema::create('subscriptions', function (Blueprint $table) {
             $table->id();
             $table->string('status');
+            $table->string('payment_type');
             $table->timestamps();
             $table->softDeletes();
             $table->foreignId('event_id')->constrained()->onUpdate('cascade')->onDelete('cascade');

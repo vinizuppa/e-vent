@@ -9,6 +9,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\ConfigController;
+use App\Http\Controllers\ConfigurationController;
 use App\Http\Controllers\SubscriptionController;
 
 /*
@@ -35,8 +36,9 @@ Route::prefix('/event/{event}')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::prefix('admin')->group(function () {
         Route::get('/', [AdminController::class, 'index'])->name('admin.home');
-        Route::get('config', [AdminController::class, 'configs'])->name('admin.configs');
+        Route::get('activities', [AdminController::class, 'activities'])->name('admin.activities');
         Route::get('subscriptions', [AdminController::class, 'subscriptions'])->name('admin.subscriptions');
+        Route::resource('configurations', ConfigurationController::class)->only(['index', 'create', 'store']);
         Route::resource('users', UserController::class);
         Route::resource('events', EventController::class);
         Route::resource('events.activities', ActivityController::class)->shallow();

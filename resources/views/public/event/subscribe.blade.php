@@ -6,7 +6,7 @@
                     <img src="{{ count($event->images) > 0 ? Storage::url($event->images[0]->path) : asset('img/event/default.jpg') }}" alt="{{ $event->name }}" class="rounded mb-2 w-100 mx-auto d-block">
                     <h3 class="card-title">{{ $event->name }}</h3>
                     <p class="card-text">Endereço: {{ $event->address }}</p>
-                    <p class="card-text">Período: {{ $event->startDate() }} - {{ $event->endDate() }}</p>
+                    <p class="card-text">Período: {{ $event->start_date->isoFormat('L') }} - {{ $event->end_date->isoFormat('L') }}</p>
                     <p class="card-text">Valor inscrição: R${{ $event->registration_fee }}</p>
                 </div>
                 <div class="col-6">

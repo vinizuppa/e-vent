@@ -22,7 +22,15 @@ class ActivityFactory extends Factory
     public function definition()
     {
         return [
-            //
+            "name" => "Atividade teste - \"" . $this->faker->word() . "\"",
+            "description" => $this->faker->paragraph(),
+            "start_date" => $this->faker->dateTimeBetween('+0 days', '+1 days'),
+            "end_date" => $this->faker->dateTimeBetween('+1 days', '+14 days'),
+            "type" => $this->faker->randomElement(['Curso', 'Palestra', 'Seminário']),
+            "place" => $this->faker->randomElement(['Auditório', 'Quadra', 'Laboratório']),
+            "vacancies" => $this->faker->randomNumber(2),
+            "instructions" => $this->faker->paragraph(),
+            "responsible" => $this->faker->firstName()
         ];
     }
 }

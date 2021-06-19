@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-slot name="title">Inscrições</x-slot>
+    <x-slot name="title">Inscrições - {{ $event->name }}</x-slot>
     <div class="row g-3">
         @forelse ($subscriptions as $subscription)
             <div class="col-12 col-sm-3 col-lg-4">
@@ -10,15 +10,12 @@
                             <span class="badge{{ $subscription->status == 'Pago' ? ' bg-success' : ' bg-warning' }}">{{ $subscription->status }}</span>
                         </h5>
                         <p class="card-text">Data: {{ date('d/m/Y H:i', strtotime($subscription->created_at)) }}</p>
-                        <p class="card-text">Participante: {{ $subscription->user->name }}</p>
+                        <p class="card-text">Participante: {{ $subscription->participant->name }}</p>
                         <p class="card-text">Evento: {{ $subscription->event->name }}</p>
                         <p class="card-text">Forma de pagamento: ---</p>
                     </div>
                     <div class="card-footer text-end">
                         @if ($subscription->status == 'Aguardando pagamento')
-                            <a href="#" class="btn btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Informações">
-                                <i class="fas fa-info-circle"></i>
-                            </a>
                             <a href="#" class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" title="Confirmar pagamento">
                                 <i class="fas fa-money-bill-wave"></i>
                             </a>

@@ -1,15 +1,15 @@
 <x-app-layout>
-    <x-slot name="title">Inscrições</x-slot>
+    <x-slot name="title">Atividades</x-slot>
     <div class="list-group shadow">
         @foreach ($events as $event)
-            <a href="{{ route('events.subscriptions.index', $event) }}" class="list-group-item list-group-item-action">
+            <a href="{{ route('events.activities.index', $event) }}" class="list-group-item list-group-item-action">
                 <div class="row">
                     <div class="col-11">
                         <h5>{{ $event->name }}</h5>
                     </div>
                     <div class="col-1 text-right">
-                        <span class="badge {{ count($event->subscriptions) > 0 ? 'bg-success' : 'bg-danger' }}">
-                            {{ count($event->subscriptions) }} inscrições
+                        <span class="badge {{ count($event->activities) > 0 ? 'bg-success' : 'bg-danger' }}">
+                            {{ count($event->activities) }} atividades
                         </span>
                     </div>
                     <div class="col-12">

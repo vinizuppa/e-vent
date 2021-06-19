@@ -21,6 +21,7 @@ class SubscriptionController extends Controller
     {
         $subscriptions = $event->subscriptions()->paginate(6);
         return view('admin.subscription.index', [
+            'event' => $event,
             'subscriptions' => $subscriptions
         ]);
     }

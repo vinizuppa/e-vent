@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-slot name="title">Bem-vindo, {{ $subscriptions[0]->user->name }}!</x-slot>
+    <x-slot name="title">Bem-vindo, {{ auth()->user()->name }}!</x-slot>
     <div class="card shadow mb-2">
         <div class="card-body">
             <h3 class="card-title">Suas inscrições</h3>

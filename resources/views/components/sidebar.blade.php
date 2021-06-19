@@ -9,7 +9,8 @@
                     </a>
                 </li>
                 <li class="nav-item bg-danger rounded">
-                    <a class="nav-link text-light" href="#">
+                    <a class="nav-link text-light" href="{{ route('admin.activities') }}">
+                        <i class="fas fa-file-signature"></i>
                         Atividades
                     </a>
                 </li>
@@ -20,7 +21,7 @@
                     </a>
                 </li>
                 <li class="nav-item bg-danger rounded">
-                    <a class="nav-link text-light" href="{{ route('admin.configs') }}">
+                    <a class="nav-link text-light" href="{{ route('configurations.index') }}">
                         <i class="fas fa-cog"></i>
                         Configurações
                     </a>

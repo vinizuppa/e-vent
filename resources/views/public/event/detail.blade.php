@@ -60,7 +60,7 @@
                                     <li href="#" class="list-group-item list-group-item-action">
                                         <div class="d-flex w-100 justify-content-between">
                                             <h5 class="mb-1">{{ $activity->name }}</h5>
-                                            <small class="text-muted">Início: {{ $activity->startDate() }}</small>
+                                            <small class="text-muted">Início: {{ $activity->start_date->isoFormat('L') }}</small>
                                         </div>
                                         <h5></h5>
                                         <p class="mb-1">Instruções: {{ $activity->instructions }}</p>

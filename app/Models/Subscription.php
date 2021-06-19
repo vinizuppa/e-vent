@@ -10,7 +10,8 @@ class Subscription extends Model
     use HasFactory;
 
     protected $fillable = [
-        'status'
+        'status',
+        'payment_type'
     ];
 
     public function event()
@@ -18,7 +19,7 @@ class Subscription extends Model
         return $this->belongsTo(Event::class);
     }
 
-    public function user()
+    public function participant()
     {
         return $this->belongsTo(User::class);
     }

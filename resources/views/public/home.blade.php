@@ -67,7 +67,7 @@
         <!-- Cards de eventos -->
         <div class="row my-2 g-4">
             @forelse ($events as $event)
-                <div class="col-12 col-md-4">
+                <div class="col-12 col-md-3">
                     <div class="card shadow">
                         <img src="{{ count($event->images) > 0 ? Storage::url($event->images[0]->path) : asset('img/event/default.jpg') }}" class="card-img-top" alt="{{ $event->name }}">
                         <div class="card-body">

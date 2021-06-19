@@ -14,19 +14,19 @@
                             <span class="badge bg-danger mr-2">#{{ $activity->id }}</span>
                             {{ $activity->name }}
                         </h5>
-                        <p class="card-text">Início: {{ $activity->startDate() }}</p>
-                        <p class="card-text">Final: {{ $activity->endDate() }}</p>
+                        <p class="card-text">Início: {{ $activity->start_date->isoFormat('L') }}</p>
+                        <p class="card-text">Final: {{ $activity->end_date->isoFormat('L') }}</p>
                         <p class="card-text">Tipo: {{ $activity->type }}</p>
                         <p class="card-text">Vagas: {{ $activity->vacancies }}</p>
                     </div>
                     <div class="card-footer text-end">
-                        <a href="{{ route('events.activities.show', [$event, $activity]) }}" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Info">
+                        <a href="{{ route('activities.show', $activity) }}" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Info">
                             <i class="fas fa-info-circle"></i>
                         </a>
-                        <a href="{{ route('events.activities.edit', [$event, $activity]) }}" class="btn btn-warning" style="color: white" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">
+                        <a href="{{ route('activities.edit', $activity) }}" class="btn btn-warning" style="color: white" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">
                             <i class="fas fa-pencil-alt"></i>
                         </a>
-                        <a href="#" id="btnExcluir" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalExcluir" data-activity="{{ $activity }}" data-route="{{ route('events.activities.destroy', [$event->id, $activity->id]) }}" data-bs-toggle="tooltip" data-bs-placement="top" title="Excluir">
+                        <a href="#" id="btnExcluir" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalExcluir" data-activity="{{ $activity }}" data-route="{{ route('activities.destroy', $activity->id) }}" data-bs-toggle="tooltip" data-bs-placement="top" title="Excluir">
                             <i class="fas fa-trash"></i>
                         </a>
                     </div>
