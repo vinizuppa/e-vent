@@ -28,6 +28,15 @@ function id(el) {
   return document.getElementById(el);
 }
 
+function copyText(id) {
+  var text = document.getElementById(id);
+
+  if (text) {
+    text.select();
+    document.execCommand('copy');
+  }
+}
+
 window.onload = function () {
   var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
   var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {

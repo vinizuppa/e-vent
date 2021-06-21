@@ -21,6 +21,12 @@
                     </a>
                 </li>
                 <li class="nav-item bg-danger rounded">
+                    <a class="nav-link text-light" href="#">
+                        <i class="fas fa-list"></i>
+                        Presenças
+                    </a>
+                </li>
+                <li class="nav-item bg-danger rounded">
                     <a class="nav-link text-light" href="{{ route('configurations.index') }}">
                         <i class="fas fa-cog"></i>
                         Configurações
@@ -28,15 +34,9 @@
                 </li>
             @else
                 <li class="nav-item bg-danger rounded">
-                    <a href="#" class="nav-link text-light">
+                    <a href="{{ route('admin.home') }}" class="nav-link text-light">
                         <i class="fas fa-plus"></i>
                         Inscrições
-                    </a>
-                </li>
-                <li class="nav-item bg-danger rounded">
-                    <a href="#" class="nav-link text-light">
-                        <i class="fas fa-dollar-sign"></i>
-                        Pagamentos
                     </a>
                 </li>
             @endif

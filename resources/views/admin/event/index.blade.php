@@ -7,23 +7,23 @@
     </x-slot>
     <div class="row mb-2">
         <div class="col">
-            <small>
-                <span class="badge bg-secondary">&nbsp;</span> Eventos finalizados
-            </small>
+            <div class="card shadow p-2">
+                <p class="card-text"><span class="badge bg-secondary">&nbsp;</span> Eventos finalizados</p>
+            </div>
         </div>
     </div>
     <div class="row g-3">
         @forelse ($events as $event)
             <div class="col-12 col-sm-6 col-lg-4">
-                <div class="card shadow {{ $event->end_date <= now() ? 'bg-secondary text-white' : '' }}">
+                <div class="card shadow{{ $event->end_date <= now() ? ' bg-secondary text-white' : '' }}">
                     <div class="card-body">
                         <h5 class="card-title">
                             <span class="badge bg-danger mr-2">#{{ $event->id }}</span>
                             {{ $event->name }}
                         </h5>
-                        <p class="card-text">Duração: {{ $event->start_date->isoFormat('L hh:mm') }} - {{ $event->end_date->isoFormat('L hh:mm') }}</p>
-                        <p class="card-text">{{ $event->registration_fee == 0 ? 'Gratuito' : 'Valor inscrição: R$ ' . $event->registration_fee }}</p>
-                        <p class="card-text">Atividades: {{ count($event->activities) }}</p>
+                        <p class="card-text"><strong>Período:</strong> {{ $event->start_date->isoFormat('L HH:mm') }} - {{ $event->end_date->isoFormat('L HH:mm') }}</p>
+                        <p class="card-text"><strong>Valor inscrição:</strong> {{ $event->registration_fee == 0 ? 'Gratuito' : 'R$ ' . $event->registration_fee }}</p>
+                        <p class="card-text"><strong>Atividades:</strong> {{ count($event->activities) }}</p>
                     </div>
                     <div class="card-footer text-end">
                         <a href="{{ route('events.show', $event) }}" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Info">

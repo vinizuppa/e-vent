@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\Event;
 use App\Models\Subscription;
 use App\Models\User;
+use App\Models\Configuration;
+use App\Utils\Pix\Payload;
 
 class SubscriptionController extends Controller
 {
@@ -45,9 +47,14 @@ class SubscriptionController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Event $event)
     {
-        //
+        $subscription = $event->subscriptions()->create([
+            'status' => 'Aguardando pagamento',
+            'payment_type' => $request->btnradio,
+            'user_id' => auth()->user()->id
+        ]);
+        return redirect()->route('subscriptions.show', $subscription);
     }
 
     /**
@@ -58,8 +65,19 @@ class SubscriptionController extends Controller
      */
     public function show(Subscription $subscription)
     {
+        $pixKey = Configuration::firstWhere('name', 'pixKey')->value;
+        $merchantName = Configuration::firstWhere('name', 'pixMerchantName')->value;
+        $merchantCity = Configuration::firstWhere('name', 'pixMerchantCity')->value;
+        $payload = ($pixKey == '' || $merchantName == '' || $merchantCity == '') ? '' : (new Payload())
+            ->setPixKey($pixKey)
+            ->setDescription('Inscrição [' . $subscription->id . '] ' . $subscription->event->name)
+            ->setMerchantName($merchantName)
+            ->setMerchantCity($merchantCity)
+            ->setAmount($subscription->event->registration_fee)
+            ->setTxid('E' . $subscription->event->id . 'I' . $subscription->id)->getPayload();
         return view('admin.subscription.show', [
-            'subscription' => $subscription
+            'subscription' => $subscription,
+            'payload' => $payload
         ]);
     }
 
@@ -94,7 +112,8 @@ class SubscriptionController extends Controller
      */
     public function destroy(Subscription $subscription)
     {
-        //
+        $subscription->delete();
+        return redirect()->route('admin.home');
     }
 
 }

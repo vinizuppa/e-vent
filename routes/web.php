@@ -42,7 +42,7 @@ Route::middleware('auth')->group(function () {
         Route::resource('users', UserController::class);
         Route::resource('events', EventController::class);
         Route::resource('events.activities', ActivityController::class)->shallow();
-        Route::resource('events.subscriptions', SubscriptionController::class)->only(['index', 'show'])->shallow();
+        Route::resource('events.subscriptions', SubscriptionController::class)->only(['index', 'show', 'destroy'])->shallow();
     });
 });
 

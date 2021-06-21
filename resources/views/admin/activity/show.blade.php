@@ -2,19 +2,19 @@
     <x-slot name="title">Informações Atividade</x-slot>
     <div class="card shadow">
         <div class="card-body">
-            <h4 class="card-title">{{ $activity->name }}</h4>
+            <h3 class="card-title">{{ $activity->name }}</h3>
             <div class="row row-cols-1 row-cols-md-2">
-                <div class="col">
-                    <p class="card-text">Descrição: {{ $activity->description }}</p>
-                    <p class="card-text">Tipo: {{ $activity->type }}</p>
-                    <p class="card-text">Local: {{ $activity->place }}</p>
-                    <p class="card-text">Instruções: {{ $activity->instructions }}</p>
+                <div class="col-12 col-md-6">
+                    <p class="card-text"><strong>Descrição:</strong> {{ $activity->description }}</p>
+                    <p class="card-text"><strong>Instruções:</strong> {{ $activity->instructions }}</p>
                 </div>
-                <div class="col">
-                    <p class="card-text">Vagas: {{ $activity->vacancies }}</p>
-                    <p class="card-text">Responsável: {{ $activity->responsible }}</p>
-                    <p class="card-text">Início: {{ $activity->startDate() }}</p>
-                    <p class="card-text">Fim: {{ $activity->endDate() }}</p>
+                <div class="col-12 col-md-6">
+                    <p class="card-text"><strong>Tipo:</strong> {{ $activity->type }}</p>
+                    <p class="card-text"><strong>Local:</strong> {{ $activity->place }}</p>
+                    <p class="card-text"><strong>Vagas:</strong> {{ $activity->vacancies }}</p>
+                    <p class="card-text"><strong>Responsável:</strong> {{ $activity->responsible }}</p>
+                    <p class="card-text"><strong>Início:</strong> {{ $activity->start_date->isoFormat('L hh:mm') }}</p>
+                    <p class="card-text"><strong>Fim:</strong> {{ $activity->end_date->isoFormat('L hh:mm') }}</p>
                 </div>
             </div>
         </div>

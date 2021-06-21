@@ -8,6 +8,7 @@ use App\Models\Activity;
 use App\Models\Event;
 use App\Models\Subscription;
 use App\Models\User;
+use App\Utils\Pix\Payload;
 
 class AdminController extends Controller
 {
@@ -66,8 +67,13 @@ class AdminController extends Controller
      */
     public function subscriptions()
     {
+        $events = Event::withCount('subscriptions')
+            ->orderBy('end_date', 'desc')
+            ->orderBy('start_date')
+            ->orderBy('subscriptions_count', 'desc')
+            ->paginate(6);
         return view('admin.subscriptions', [
-            'events' => Event::orderBy('end_date', 'desc')->orderBy('start_date')->paginate(6)
+            'events' => $events
         ]);
     }
 
@@ -78,8 +84,13 @@ class AdminController extends Controller
      */
     public function activities()
     {
+        $events = Event::withCount('activities')
+            ->orderBy('end_date', 'desc')
+            ->orderBy('start_date')
+            ->orderBy('activities_count', 'desc')
+            ->paginate(6);
         return view('admin.activities', [
-            'events' => Event::orderBy('end_date', 'desc')->orderBy('start_date')->paginate(6)
+            'events' => $events
         ]);
     }
 

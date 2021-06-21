@@ -10,9 +10,9 @@
                             <span class="badge{{ $subscription->status == 'Pago' ? ' bg-success' : ' bg-warning' }}">{{ $subscription->status }}</span>
                         </h5>
                         <p class="card-text">Data: {{ date('d/m/Y H:i', strtotime($subscription->created_at)) }}</p>
-                        <p class="card-text">Participante: {{ $subscription->participant->name }}</p>
+                        <p class="card-text">Participante: {{ $subscription->user->name }}</p>
                         <p class="card-text">Evento: {{ $subscription->event->name }}</p>
-                        <p class="card-text">Forma de pagamento: ---</p>
+                        <p class="card-text">Forma de pagamento: {{ $subscription->payment_type }}</p>
                     </div>
                     <div class="card-footer text-end">
                         @if ($subscription->status == 'Aguardando pagamento')

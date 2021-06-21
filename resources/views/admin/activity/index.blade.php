@@ -14,10 +14,9 @@
                             <span class="badge bg-danger mr-2">#{{ $activity->id }}</span>
                             {{ $activity->name }}
                         </h5>
-                        <p class="card-text">Início: {{ $activity->start_date->isoFormat('L') }}</p>
-                        <p class="card-text">Final: {{ $activity->end_date->isoFormat('L') }}</p>
-                        <p class="card-text">Tipo: {{ $activity->type }}</p>
-                        <p class="card-text">Vagas: {{ $activity->vacancies }}</p>
+                        <p class="card-text"><strong>Período:</strong> {{ $activity->start_date->isoFormat('L hh:mm') }} - {{ $activity->end_date->isoFormat('L hh:mm') }}</p>
+                        <p class="card-text"><strong>Tipo:</strong> {{ $activity->type }}</p>
+                        <p class="card-text"><strong>Vagas:</strong> {{ $activity->vacancies }}</p>
                     </div>
                     <div class="card-footer text-end">
                         <a href="{{ route('activities.show', $activity) }}" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Info">

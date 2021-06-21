@@ -2,16 +2,29 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Configuration;
 use Illuminate\Http\Request;
+
+use App\Models\Configuration;
+use App\Utils\Pix\Payload;
 
 class ConfigurationController extends Controller
 {
 
     public function index()
     {
+        $pixKey = Configuration::firstWhere('name', 'pixKey')->value;
+        $merchantName = Configuration::firstWhere('name', 'pixMerchantName')->value;
+        $merchantCity = Configuration::firstWhere('name', 'pixMerchantCity')->value;
+        $payload = ($pixKey == '' || $merchantName == '' || $merchantCity == '') ? '' : (new Payload())
+            ->setPixKey($pixKey)
+            ->setDescription('Teste Pix Event')
+            ->setMerchantName($merchantName)
+            ->setMerchantCity($merchantCity)
+            ->setAmount(0.01)
+            ->setTxid('testePix')->getPayload();
         return view('admin.configurations.index', [
-            'configurations' => Configuration::all()
+            'configurations' => Configuration::all(),
+            'payload' => $payload
         ]);
     }
 
@@ -37,5 +50,4 @@ class ConfigurationController extends Controller
         ], ['name'], ['label', 'value']);
         return redirect()->route('configurations.index');
     }
-
 }

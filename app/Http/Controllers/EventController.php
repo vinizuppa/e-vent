@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use League\Flysystem\Util;
 use App\Models\Event;
+use App\Models\Subscription;
 use App\Models\User;
 
 class EventController extends Controller
@@ -175,8 +176,12 @@ class EventController extends Controller
      */
     public function detail(Event $event)
     {
+        $subscribed = Subscription::where('user_id', auth()->user()->id)
+            ->where('event_id', $event->id)
+            ->count() > 0 ? true : false;
         return view('public.event.detail', [
-            'event' => $event
+            'event' => $event,
+            'subscribed' => $subscribed
         ]);
     }
 
