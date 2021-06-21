@@ -12,8 +12,8 @@
                     <p class="card-text">Endereço: {{ $event->address }}</p>
                     <p class="card-text">Telefone: {{ $event->phone }}</p>
                     <p class="card-text">Valor inscrição: {{ $event->registration_fee }}</p>
-                    <p class="card-text">Início: {{ $event->startDate() }}</p>
-                    <p class="card-text">Fim: {{ $event->endDate() }}</p>
+                    <p class="card-text">Início: {{ $event->start_date->isoFormat('L HH:mm') }}</p>
+                    <p class="card-text">Fim: {{ $event->end_date->isoFormat('L HH:mm') }}</p>
                 </div>
             </div>
             <hr class="border-2 bg-danger">
@@ -29,7 +29,7 @@
                             <li href="#" class="list-group-item list-group-item-action">
                                 <div class="d-flex w-100 justify-content-between">
                                     <h5 class="mb-1">{{ $activity->name }}</h5>
-                                    <small class="text-muted">Início: {{ $activity->startDate() }}</small>
+                                    <small class="text-muted">Início: {{ $activity->start_date->isoFormat('L HH:mm') }}</small>
                                 </div>
                                 <h5></h5>
                                 <p class="mb-1">Instruções: {{ $activity->instructions }}</p>
