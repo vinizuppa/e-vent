@@ -54,7 +54,11 @@
                 </div>
                 <div class="col-md-6">
                     <label for="end_date" class="form-label">Data/hora final *</label>
-                    <input id="end_date" type="datetime-local" class="form-control @error('end_date') is-invalid @enderror" name="end_date" value="{{ old('end_date') }}">
+                    <input 
+                        type="datetime-local" 
+                        class="form-control @error('end_date') is-invalid @enderror" 
+                        name="end_date" 
+                        value="{{ old('end_date') }}">
                     @error('end_date')
                         <div class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -63,7 +67,11 @@
                 </div>
                 <div class="col-md-6">
                     <label for="phone" class="form-label">Telefone (com DDD) *</label>
-                    <input id="phone" type="tel" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}">
+                    <input
+                        type="tel" 
+                        class="form-control @error('phone') is-invalid @enderror" 
+                        name="phone" 
+                        value="{{ old('phone') }}">
                     @error('phone')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -72,7 +80,11 @@
                 </div>
                 <div class="col-md-6">
                     <label for="image" class="form-label">Imagem</label>
-                    <input id="image" type="file" name="image" class="form-control @error('image') is-invalid @enderror" value="{{ old('image') }}">
+                    <input 
+                        type="file" 
+                        name="image" 
+                        class="form-control @error('image') is-invalid @enderror" 
+                        value="{{ old('image') }}">
                     @error('image')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>

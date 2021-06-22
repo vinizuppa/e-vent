@@ -15,6 +15,7 @@
                         </div>
                         <p class="mb-1"><strong>Situação:</strong> {{ $subscription->status }}</p>
                         <p class="mb-1"><strong>Forma de pagamento:</strong> {{ $subscription->payment_type }}</p>
+                        <p class="mb-1"><strong>Comprovante pagamento:</strong> {{ $subscription->image_path ? 'Comprovante enviado' : 'Sem comprovante' }}</p>                        
                     </a>
                 @empty
                     <a href="#" class="list-group-item list-group-item-action">

@@ -29,7 +29,7 @@ Route::prefix('/event/{event}')->group(function () {
     Route::get('detail', [EventController::class, 'detail'])->name('public.events.detail');
     Route::middleware('auth')->group(function() {
         Route::get('subscribe', [SubscriptionController::class, 'create'])->name('public.subscription.create');
-        Route::post('subscribe', [SubscriptionController::class, 'store'])->name('public.subscription.store');
+        Route::post('subscribe', [SubscriptionController::class, 'store'])->name('public.subscription.store');        
     });
 });
 
@@ -38,6 +38,10 @@ Route::middleware('auth')->group(function () {
         Route::get('/', [AdminController::class, 'index'])->name('admin.home');
         Route::get('activities', [AdminController::class, 'activities'])->name('admin.activities');
         Route::get('subscriptions', [AdminController::class, 'subscriptions'])->name('admin.subscriptions');
+        Route::get('subscriptions/{subscription}/payment', [SubscriptionController::class, 'paymentForm'])->name('subscription.payment');
+        Route::put('subscriptions/{subscription}/payment', [SubscriptionController::class, 'payment'])->name('subscription.payment.store');
+        Route::get('subscriptions/{subscription}/confirmation', [SubscriptionController::class, 'confirmationForm'])->name('subscription.confirmation');
+        Route::put('subscriptions/{subscription}/confirmation', [SubscriptionController::class, 'confirmation'])->name('subscription.confirmation.store');
         Route::resource('configurations', ConfigurationController::class)->only(['index', 'create', 'store']);
         Route::resource('users', UserController::class);
         Route::resource('events', EventController::class);

@@ -19,13 +19,7 @@
                         <i class="fas fa-list"></i>
                         Inscrições
                     </a>
-                </li>
-                <li class="nav-item bg-danger rounded">
-                    <a class="nav-link text-light" href="#">
-                        <i class="fas fa-list"></i>
-                        Presenças
-                    </a>
-                </li>                
+                </li>                                
             @else
                 <li class="nav-item bg-danger rounded">
                     <a href="{{ route('admin.home') }}" class="nav-link text-light">

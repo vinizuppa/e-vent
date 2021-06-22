@@ -13,17 +13,19 @@
                         <p class="card-text">Participante: {{ $subscription->user->name }}</p>
                         <p class="card-text">Evento: {{ $subscription->event->name }}</p>
                         <p class="card-text">Forma de pagamento: {{ $subscription->payment_type }}</p>
+                        <p class="card-text">Comprovante: {{ $subscription->image_path != '' ? 'Enviado' : 'Sem comprovante'}}</p>
                     </div>
                     <div class="card-footer text-end">
-                        @if ($subscription->status == 'Aguardando pagamento')
-                            <a href="#" class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" title="Confirmar pagamento">
+                        @if ($subscription->status == 'Aguardando pagamento')                            
+                            <a href="{{ route('subscription.confirmation', $subscription) }}" class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" title="Confirmar pagamento">
                                 <i class="fas fa-money-bill-wave"></i>
-                            </a>
+                                Confirmar pagamento
+                            </a>                            
                         @else
-                            <a href="#" class="btn btn-success">
+                            <span class="btn btn-success">
                                 <i class="fas fa-check"></i>
                                 Pago
-                            </a>
+                            </span>                            
                         @endif
                     </div>
                 </div>

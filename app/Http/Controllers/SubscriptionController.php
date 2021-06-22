@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 use App\Models\Event;
 use App\Models\Subscription;
@@ -77,7 +78,7 @@ class SubscriptionController extends Controller
         $merchantCity = Configuration::firstWhere('name', 'pixMerchantCity')->value;
         $payload = ($pixKey == '' || $merchantName == '' || $merchantCity == '') ? '' : (new Payload())
             ->setPixKey($pixKey)
-            ->setDescription('Inscrição [' . $subscription->id . '] ' . $subscription->event->name)
+            ->setDescription('Inscrição ' . $subscription->id . ' - ' . $subscription->event->name)
             ->setMerchantName($merchantName)
             ->setMerchantCity($merchantCity)
             ->setAmount($subscription->event->registration_fee)
@@ -121,6 +122,60 @@ class SubscriptionController extends Controller
     {
         $subscription->delete();
         return redirect()->route('admin.home');
+    }
+
+
+    /** 
+     * 
+     * @param Subscription $subscription
+     * @return \Illuminate\Http\Response
+     */ 
+    public function paymentForm(Subscription $subscription)
+    {
+        return view('public.subscription.payment', [
+            'subscription' => $subscription
+        ]);
+    }
+
+    /**
+     * 
+     * @param Request $request
+     * @param Subscription $subscription
+     * @return \Illuminate\Http\Response
+     */
+    public function payment(Request $request, Subscription $subscription)
+    {
+        $request->validate([
+            'payment' => 'required|image|max:2000'
+        ]);
+        if ($request->file('payment')) {
+            $image = $request->file('payment');
+            $imageName = time() . '-pay.' . $image->getClientOriginalExtension();            
+            if ($subscription->image_path != '') {
+                Storage::delete($subscription->image_path);
+            }
+            $imagePath = Storage::putFileAs('payments', $image, $imageName, 'public');
+            $subscription->update([
+                'image_name' => $imageName,
+                'image_path' => $imagePath
+            ]);
+        }
+        return redirect()->route('subscriptions.show', $subscription);
+    }
+
+    public function confirmationForm(Subscription $subscription)
+    {
+        return view('admin.subscription.confirmation', [
+            'subscription' => $subscription
+        ]);
+    }
+
+    public function confirmation(Request $request, Subscription $subscription)
+    {        
+        $subscription->update([
+            'status' => 'Pago'
+        ]);
+        return redirect()->route('events.subscriptions.index', $subscription->event);
     }
 
 }

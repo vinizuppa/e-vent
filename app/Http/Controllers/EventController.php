@@ -150,7 +150,7 @@ class EventController extends Controller
     public function destroy(Event $event)
     {
         $event->delete();        
-        Storage::delete($image->image_path);                        
+        Storage::delete($event->image_path);                        
         return redirect()->route('events.index');
     }
 
