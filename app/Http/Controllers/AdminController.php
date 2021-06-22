@@ -35,9 +35,13 @@ class AdminController extends Controller
             $events = Event::count();
             $activities = Activity::count();
             $subscriptions = Subscription::count();
-            $subsChart = [
+            $subscriptionsStatus = [
                 ['Aguardando pagamento', Subscription::where('status', 'Aguardando pagamento')->count()],
                 ['Pago', Subscription::where('status', 'Pago')->count()]
+            ];
+            $subscriptionsPayment = [
+                ['Pix', Subscription::where('payment_type', 'Pix')->count()],
+                ['Manual', Subscription::where('payment_type', 'Manual')->count()]
             ];
             $pixConfig = (Configuration::firstWhere('name', 'pixKey')->value == '' && 
                 Configuration::firstWhere('name', 'pixMerchantName')->value == '' &&
@@ -50,7 +54,8 @@ class AdminController extends Controller
                 'activities' => $activities,
                 'subscriptions' => $subscriptions,
                 'pixConfig' => $pixConfig,
-                'subsChart' => $subsChart
+                'subscriptionsStatus' => $subscriptionsStatus,
+                'subscriptionsPayment' => $subscriptionsPayment
             ]);
         }
     }
