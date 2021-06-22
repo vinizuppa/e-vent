@@ -17,6 +17,8 @@ class CreateSubscriptionsTable extends Migration
             $table->id();
             $table->string('status');
             $table->string('payment_type');
+            $table->string('image_name')->nullable();
+            $table->string('image_path')->nullable();
             $table->timestamps();
             $table->softDeletes();
             $table->foreignId('event_id')->constrained()->onUpdate('cascade')->onDelete('cascade');

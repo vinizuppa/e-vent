@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use League\Flysystem\Util;
+
 use App\Models\Event;
 use App\Models\Subscription;
 use App\Models\User;
@@ -63,9 +64,15 @@ class EventController extends Controller
             'phone' => 'required|string',
             'registration_fee' => 'required|numeric|max:999.99',
             'start_date' => 'required|date|after_or_equal:now',
-            'end_date' => 'required|date|after:start_date'
+            'end_date' => 'required|date|after:start_date',
+            'image' => 'nullable|image|max:2000'
         ]);
-        $user = User::findOrFail($request->user()->id);
+        $user = User::find(auth()->user()->id);
+        if ($request->file('image')) {
+            $image = $request->file('image');
+            $imageName = time() . '-img.' . $image->getClientOriginalExtension();        
+            $imagePath = Storage::putFileAs('events', $image, $imageName, 'public');
+        }
         $event = $user->events()->create([
             'name' => $request->name,
             'description' => $request->description,
@@ -73,14 +80,10 @@ class EventController extends Controller
             'phone' => $request->phone,
             'registration_fee' => $request->registration_fee,
             'start_date' => $request->start_date,
-            'end_date' => $request->end_date
-        ]);
-        $name = Util::normalizePath($event->id . 'image.' . $request->file('image')->getClientOriginalExtension());
-        $path = $request->file('image')->storeAs('public/event/' . $event->id, $name);
-        $event->images()->create([
-            'name' => $name,
-            'path' => $path
-        ]);
+            'end_date' => $request->end_date,
+            'image_name' => $imageName ?? '',
+            'image_path' => $imagePath ?? ''
+        ]);                
         return redirect()->route('events.index');
     }
 
@@ -113,8 +116,17 @@ class EventController extends Controller
             'phone' => 'required|string',
             'registration_fee' => 'required|numeric',
             'start_date' => 'required|date|after_or_equal:now',
-            'end_date' => 'required|date|after:start_date'
+            'end_date' => 'required|date|after:start_date',
+            'image' => 'nullable|image|max:2000'
         ]);
+        if ($request->file('image')) {
+            $image = $request->file('image');
+            $imageName = time() . '-img.' . $image->getClientOriginalExtension();            
+            $imagePath = Storage::putFileAs('events', $image, $imageName, 'public');
+            if ($event->image_path != '') {
+                Storage::delete($event->image_path);
+            }                              
+        }                     
         $event->update([
             'name' => $request->name,
             'description' => $request->description,
@@ -122,18 +134,10 @@ class EventController extends Controller
             'phone' => $request->phone,
             'registration_fee' => $request->registration_fee,
             'start_date' => $request->start_date,
-            'end_date' => $request->end_date
-        ]);
-        if($request->file('image')) {
-            $event->images()->delete();
-            Storage::deleteDirectory('public/event/' . $event->id);
-            $name = Util::normalizePath($event->id . 'image.' . $request->file('image')->getClientOriginalExtension());
-            $path = $request->file('image')->storeAs('public/event/' . $event->id, $name);
-            $event->images()->create([
-                'name' => $name,
-                'path' => $path
-            ]);
-        }
+            'end_date' => $request->end_date,
+            'image_name' => $imageName ?? $event->image_name,
+            'image_path' => $imagePath ?? $event->image_path
+        ]);        
         return redirect()->route('events.index');
     }
 
@@ -145,9 +149,8 @@ class EventController extends Controller
      */
     public function destroy(Event $event)
     {
-        $event->delete();
-        $event->images()->delete();
-        Storage::deleteDirectory('public/event' . $event->id);
+        $event->delete();        
+        Storage::delete($image->image_path);                        
         return redirect()->route('events.index');
     }
 
@@ -187,6 +190,8 @@ class EventController extends Controller
 
     /**
      * Show subscription page - public
+     * 
+     * @return \Illuminate\Http\Response
      */
     public function subscribe(Event $event)
     {
@@ -194,11 +199,5 @@ class EventController extends Controller
             'event' => $event
         ]);
     }
-
-    public function subscribe2(Event $event)
-    {
-        return view('public.event.subscribe2', [
-            'event' => $event
-        ]);
-    }
+    
 }

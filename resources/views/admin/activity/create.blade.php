@@ -18,7 +18,7 @@
                     <label for="dates" class="form-label">Período</label>
                     <input
                         type="text"
-                        value="{{ date('d/m/Y H:m', strtotime($event->start_date)) }} - {{ date('d/m/Y H:m', strtotime($event->end_date)) }}"
+                        value="{{ $event->start_date->isoFormat('L HH:mm') }} - {{ $event->end_date->isoFormat('L HH:mm') }}"
                         class="form-control disabled">
                 </div>
                 <div class="col-md-4">
@@ -52,13 +52,13 @@
                     @enderror
                 </div>
                 <div class="col-md-4">
-                    <label for="type" class="form-label">Tipo Atividade *</label>
-                    <input
-                        type="text"
-                        class="form-control @error('type') is-invalid @enderror"
-                        name="type"
-                        value="{{ old('type') }}"
-                        required>
+                    <label for="type" class="form-label">Tipo *</label>
+                    <select name="type" class="form-select" required>                        
+                        <option value="" selected>Selecione uma opção</option>
+                        <option value="Curso">Curso</option>
+                        <option value="Palestra">Palestra</option>
+                        <option value="Seminário">Seminário</option>                                                                                                
+                    </select>                    
                     @error('type')
                         <div class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -71,6 +71,7 @@
                         type="number"
                         class="form-control @error('vacancies') is-invalid @enderror"
                         name="vacancies"
+                        min="0"
                         value="{{ old('vacancies') ?? '0' }}">
                     @error('vacancies')
                         <div class="invalid-feedback" role="alert">
@@ -107,7 +108,7 @@
                     @enderror
                 </div>
                 <div class="col-md-4">
-                    <label for="start_date" class="form-label">Data/hora inicial *</label>
+                    <label for="start_date" class="form-label">Data início *</label>
                     <input
                         type="datetime-local"
                         name="start_date"
@@ -124,7 +125,7 @@
                     @enderror
                 </div>
                 <div class="col-md-4">
-                    <label for="end_date" class="form-label">Data/hora final *</label>
+                    <label for="end_date" class="form-label">Data fim *</label>
                     <input
                         type="datetime-local"
                         name="end_date"

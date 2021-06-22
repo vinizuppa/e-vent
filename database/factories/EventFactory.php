@@ -27,7 +27,7 @@ class EventFactory extends Factory
             "description" => $this->faker->paragraph(),
             "address" => $this->faker->address(),
             "phone" => $this->faker->phoneNumber(),
-            "registration_fee" => $this->faker->randomFloat(2, 0, 20),
+            "registration_fee" => $this->faker->randomFloat(2, 0, 10),
             "start_date" => $this->faker->dateTimeBetween('+0 days', '+1 days'),
             "end_date" => $this->faker->dateTimeBetween('+2 days', '+15 days')
         ];

@@ -6,7 +6,7 @@
                     <div class="row justify-content-md-center text-center">
                         <div class="col col-md-8">
                             <h2 class="card-title">{{ $event->name }}</h2>
-                            <img src="{{ count($event->images) > 0 ? Storage::url($event->images[0]->path) : asset('img/event/default.jpg') }}" alt="Banner do evento" class="w-100 img-fluid rounded">
+                            <img src="{{ $event->image_path != '' ? Storage::url($event->image_path) : asset('img/event/default.jpg') }}" alt="{{ $event->name }}" class="w-100 img-fluid rounded">
                         </div>
                     </div>
                     <div class="row m-4">
@@ -28,11 +28,11 @@
                         <div class="col">
                             <p class="card-text fw-bold">
                                 <i class="bi bi-calendar2-check text-danger"></i>
-                                {{ $event->start_date->isoFormat('L') }}
+                                {{ $event->start_date->isoFormat('dddd, LLL') }}
                             </p>
                             <p class="card-text fw-bold">
                                 <i class="bi bi-calendar2-x text-danger"></i>
-                                {{ $event->end_date->isoFormat('L') }}
+                                {{ $event->end_date->isoFormat('dddd, LLL') }}
                             </p>
                         </div>
                         <div class="col">
@@ -67,7 +67,7 @@
                                                     <span class="badge bg-warning">Poucas vagas</span>
                                                 @endif
                                             </h5>
-                                            <small class="text-muted">Início: {{ $activity->start_date->isoFormat('L hh:mm') }}</small>
+                                            <small class="text-muted">Início: {{ $activity->start_date->isoFormat('L HH:mm') }}</small>
                                         </div>
                                         <h5></h5>
                                         <p class="mb-1">Instruções: {{ $activity->instructions }}</p>

@@ -8,6 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Activity extends Model
 {
+
+    const TYPE_SEMINARIO = 'Seminário';
+    const TYPE_CURSO = 'Curso';
+    const TYPE_PALESTRA = 'Palestra';
+
     use HasFactory, SoftDeletes;
 
     /**

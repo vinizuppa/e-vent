@@ -69,12 +69,13 @@
             @forelse ($events as $event)
                 <div class="col-12 col-md-3">
                     <div class="card shadow">
-                        <img src="{{ count($event->images) > 0 ? Storage::url($event->images[0]->path) : asset('img/event/default.jpg') }}" class="card-img-top" alt="{{ $event->name }}">
+                        <img src="{{ $event->image_path != '' ? Storage::url($event->image_path) : asset('img/event/default.jpg') }}" class="card-img-top" alt="{{ $event->name }}">
                         <div class="card-body">
                             <h5 class="card-title">{{ $event->name }}</h5>
-                            <p class="card-text">Período: {{ $event->start_date->isoFormat('L') }} - {{ $event->end_date->isoFormat('L') }}</p>
-                            <p class="card-text">Atividades: {{ count($event->activities) }}</p>
-                            <p class="card-text">Valor: R$ {{ $event->registration_fee }}</p>
+                            <p class="card-text"><strong>Início:</strong> {{ $event->start_date->isoFormat('dddd, LLL') }}</p>
+                            <p class="card-text"><strong>Fim:</strong> {{ $event->end_date->isoFormat('dddd, LLL') }}</p>
+                            <p class="card-text"><strong>Atividades:</strong> {{ count($event->activities) }}</p>
+                            <p class="card-text"><strong>Valor:</strong> {{ $event->registration_fee > 0 ? 'R$ ' . $event->registration_fee : 'Gratuito' }}</p>
                             <a href="{{ route('public.events.detail', $event) }}" class="btn btn-outline-danger w-100 text-uppercase">Ver mais</a>
                         </div>
                     </div>

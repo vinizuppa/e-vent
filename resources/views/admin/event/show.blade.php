@@ -4,7 +4,7 @@
         <div class="card-body">
             <div class="row">
                 <div class="col col-md-5">
-                    <img src="{{ count($event->images) > 0 ? Storage::url($event->images[0]->path) : asset('img/event/default.jpg') }}" alt="{{ $event->name }}" class="card-img">
+                    <img src="{{ $event->image_path != '' ? Storage::url($event->image_path) : asset('img/event/default.jpg') }}" alt="{{ $event->name }}" class="card-img">
                 </div>
                 <div class="col col-md-7">
                     <h4 class="card-title">{{ $event->name }}</h4>

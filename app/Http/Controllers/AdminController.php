@@ -8,6 +8,7 @@ use App\Models\Activity;
 use App\Models\Event;
 use App\Models\Subscription;
 use App\Models\User;
+use App\Models\Configuration;
 use App\Utils\Pix\Payload;
 
 class AdminController extends Controller
@@ -38,6 +39,9 @@ class AdminController extends Controller
                 ['Aguardando pagamento', Subscription::where('status', 'Aguardando pagamento')->count()],
                 ['Pago', Subscription::where('status', 'Pago')->count()]
             ];
+            $pixConfig = (Configuration::firstWhere('name', 'pixKey')->value == '' && 
+                Configuration::firstWhere('name', 'pixMerchantName')->value == '' &&
+                Configuration::firstWhere('name', 'pixMerchantCity')->value == '');
             return view('admin.home-admin', [
                 'user' => $user,
                 'participants' => $participants,
@@ -45,6 +49,7 @@ class AdminController extends Controller
                 'events' => $events,
                 'activities' => $activities,
                 'subscriptions' => $subscriptions,
+                'pixConfig' => $pixConfig,
                 'subsChart' => $subsChart
             ]);
         }

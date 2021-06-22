@@ -25,13 +25,7 @@
                         <i class="fas fa-list"></i>
                         Presenças
                     </a>
-                </li>
-                <li class="nav-item bg-danger rounded">
-                    <a class="nav-link text-light" href="{{ route('configurations.index') }}">
-                        <i class="fas fa-cog"></i>
-                        Configurações
-                    </a>
-                </li>
+                </li>                
             @else
                 <li class="nav-item bg-danger rounded">
                     <a href="{{ route('admin.home') }}" class="nav-link text-light">

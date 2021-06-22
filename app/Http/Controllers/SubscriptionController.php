@@ -48,10 +48,17 @@ class SubscriptionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request, Event $event)
-    {
+    {        
+        if ($event->registration_fee > 0) {
+            $paymentType = $request->paymentType;
+            $status = Subscription::STATUS_AGUARDANDO;            
+        } else {
+            $paymentType = Subscription::PAYMENT_NENHUM;
+            $status = Subscription::STATUS_PAGO;
+        }         
         $subscription = $event->subscriptions()->create([
-            'status' => 'Aguardando pagamento',
-            'payment_type' => $request->btnradio,
+            'status' => $status,
+            'payment_type' => $paymentType,
             'user_id' => auth()->user()->id
         ]);
         return redirect()->route('subscriptions.show', $subscription);

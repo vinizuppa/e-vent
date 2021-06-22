@@ -22,6 +22,8 @@ class CreateEventsTable extends Migration
             $table->decimal('registration_fee', 5, 2);
             $table->dateTime('start_date');
             $table->dateTime('end_date');
+            $table->string('image_name')->nullable();
+            $table->string('image_path')->nullable();
             $table->timestamps();
             $table->softDeletes();
             $table->foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');

@@ -22,7 +22,9 @@ class Event extends Model
         'phone',
         'registration_fee',
         'start_date',
-        'end_date'
+        'end_date',
+        'image_name',
+        'image_path'
     ];
 
     protected $dates = [
