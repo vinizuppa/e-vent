@@ -53,7 +53,39 @@
                     <h5>Configurações</h5>
                     <i class="fas fa-cog fa-5x"></i>
                 </a>
+            </div>            
+        </div>
+        <div class="row row-cols-2 m-2 g-2">
+            <div class="col">
+                <div class="card p-2">
+                    <div id="usuarios"></div> 
+                </div>
+            </div>
+            <div class="col">
+                <div class="card p-2">
+                    <div id="inscricoes"></div> 
+                </div>
             </div>
         </div>
     </div>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Tipo de usuário', 'Quantidade'],
+          ['Participantes', {{ $participants }}],
+          ['Organizadores', {{ $organizers }}]
+        ]);
+
+        var options = {
+          title: 'Usuários cadastrados',
+          is3D: true,
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('usuarios'));
+        chart.draw(data, options);
+      }
+    </script>
 </x-app-layout>
